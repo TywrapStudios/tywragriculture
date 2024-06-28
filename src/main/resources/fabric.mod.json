@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "agriculture",
+	"version": "${version}",
+	"name": "Tywragriculture",
+	"description": "",
+	"authors": [
+		"Tywrap Studios"
+	],
+	"contact": {
+		"homepage": "",
+		"sources": ""
+	},
+	"license": "MIT",
+	"icon": "icons/modicon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+          "net.tywrapstudios.agriculture.Tywragriculture"
+		],
+		"client": [
+			"net.tywrapstudios.TywragricultureClient"
+		],
+		"fabric-datagen": [
+          "net.tywrapstudios.agriculture.util.datagen.TywragricultureDataGenerator"
+		]
+	},
+	"mixins": [
+		"tywragriculture.mixins.json",
+		{
+			"config": "tywragriculture.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
