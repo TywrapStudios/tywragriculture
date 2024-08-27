@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "agriculture:briquette"
+    },
+    "title": {
+      "translate": "advancement.agriculture.title.iatethiswow"
+    },
+    "description": {
+      "translate": "advancement.agriculture.description.iatethiswow"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "iatethiswow": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "agriculture:briquette"
+          ]
+        }
+      }
+    }
+  },
+  "parent": "minecraft:husbandry/root"
+}

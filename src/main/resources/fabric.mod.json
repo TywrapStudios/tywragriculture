@@ -12,7 +12,7 @@
 		"sources": ""
 	},
 	"license": "MIT",
-	"icon": "icons/modicon.png",
+	"icon": "assets/agriculture/icons/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

@@ -1,10 +1,10 @@
 package net.tywrapstudios.agriculture;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.tywrapstudios.agriculture.common.block.BlockRegistry;
 import net.tywrapstudios.agriculture.common.item.ItemRegistry;
 import net.tywrapstudios.agriculture.common.item.ModItemGroup;
+import net.tywrapstudios.agriculture.resources.ModBurnableTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,8 +18,8 @@ public class Tywragriculture implements ModInitializer {
 		ItemRegistry.registerModItems();
 		BlockRegistry.registerModBlocks();
 		ModItemGroup.registerItemGroup();
-		FuelRegistry.INSTANCE.add(ItemRegistry.BRIQUETTE, 1800);
+		ModBurnableTypes.register();
 
-		LOGGER.info("Mod has loaded.");
+		LOGGER.info("Mod has loaded. Fawming Fwunny UwU.");
 	}
 }

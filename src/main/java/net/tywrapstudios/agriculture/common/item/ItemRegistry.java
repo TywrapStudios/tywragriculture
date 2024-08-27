@@ -10,7 +10,6 @@ import net.tywrapstudios.agriculture.Tywragriculture;
 import net.tywrapstudios.agriculture.common.block.BlockRegistry;
 import net.tywrapstudios.agriculture.common.item.custom.BriquetteItem;
 import net.tywrapstudios.agriculture.common.item.custom.RottenTomatoItem;
-import net.tywrapstudios.agriculture.common.item.custom.TomatoItem;
 
 import static net.tywrapstudios.agriculture.resources.ModFoodTypes.*;
 
@@ -22,13 +21,13 @@ public class ItemRegistry {
             .food(CAKE_SLICE_FOOD)));
     public static final Item STRAWBERRIES = registerItem("strawberry", new Item(new FabricItemSettings()
             .food(STRAWBERRY)));
-    public static final Item TOMATOES = registerItem("tomato", new TomatoItem(new FabricItemSettings()
+    public static final Item TOMATOES = registerItem("tomato", new Item(new FabricItemSettings()
             .food(TOMATO)));
     public static final Item ROTTEN_TOMATOES = registerItem("rotten_tomato", new RottenTomatoItem(new FabricItemSettings()));
-    public static final Item TOMATO_SEEDS = registerItem("tomato_seeds", new Item(new FabricItemSettings()));
-    public static final Item PURPLE_CARROT = registerItem("purple_carrot", new Item(new FabricItemSettings()
+    public static final Item PURPLE_CARROT = registerItem("purple_carrot", new AliasedBlockItem(BlockRegistry.PURPLE_CARROT, new FabricItemSettings()
             .food(CARROT_PURPLE)));
-    public static final Item BLACK_CARROT = registerItem("black_carrot", new AliasedBlockItem(BlockRegistry.BLACK_CARROT,new FabricItemSettings()
+    public static final Item TOMATO_SEEDS = registerItem("tomato_seeds", new AliasedBlockItem(BlockRegistry.TOMATO_PLANT, new FabricItemSettings()));
+    public static final Item BLACK_CARROT = registerItem("black_carrot", new AliasedBlockItem(BlockRegistry.BLACK_CARROT, new FabricItemSettings()
             .food(CARROT_BLACK)));
     public static final Item CABBAGES = registerItem("cabbage", new Item(new FabricItemSettings()
             .food(CABBAGE)));
