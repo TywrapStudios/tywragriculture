@@ -11,11 +11,11 @@ import org.spongepowered.asm.mixin.injection.*;
 @Mixin(Items.class)
 public abstract class MakeGoldenCarrotAliasedBlockItems {
 	@Redirect(
-			method = "<clinit>",
-			at = @At(value = "NEW", target = "(Lnet/minecraft/item/Item$Settings;)Lnet/minecraft/item/Item;"),
-			slice = @Slice(
-					from = @At(value = "CONSTANT", args = "stringValue=golden_carrot")
-			)
+		method = "<clinit>",
+		at = @At(value = "NEW", target = "(Lnet/minecraft/item/Item$Settings;)Lnet/minecraft/item/Item;"),
+		slice = @Slice(
+			from = @At(value = "CONSTANT", args = "stringValue=golden_carrot")
+		)
 	)
 	private static Item agriculture$makeGoldenCarrotAliased(Item.Settings settings) {
 		return new AliasedBlockItem(BlockRegistry.GOLD_CARROT, (new Item.Settings()).food(FoodComponents.GOLDEN_CARROT));
