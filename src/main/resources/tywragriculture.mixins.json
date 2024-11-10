@@ -3,10 +3,10 @@
   "package": "net.tywrapstudios.agriculture.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "MainMixin",
-    "MakeGoldenCarrotAliasedBlockItems"
+    "CropBlockMixin",
+    "ItemsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  }
 }
