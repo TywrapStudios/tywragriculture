@@ -16,7 +16,7 @@ public class Config {
     public static class WorldConfig {
         @Comment("Whether to allow golden carrots to be grown.")
         public boolean allow_golden_carrot_crops = true;
-        @Comment("Whether to allow right clicking to harvest crops.")
+        @Comment("Whether to allow right-clicking to harvest crops.")
         public boolean right_click_harvest = true;
     }
 }
