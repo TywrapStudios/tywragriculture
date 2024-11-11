@@ -10,7 +10,7 @@ import blue.endless.jankson.Comment;
  * <br/> I'd love to transfer over this system to all our other mods.
  */
 public class Config {
-    public String format_version = "a";
+    public String format_version = "AAAA";
     @Comment("Several configurations for utility features.")
     public UtilConfig util_config = new UtilConfig();
     public static class UtilConfig {

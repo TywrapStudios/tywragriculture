@@ -20,7 +20,7 @@ public class Tywragriculture implements ModInitializer {
 	public static final Logger DEBUG = LoggerFactory.getLogger("Tywragriculture-DEBUG");
 	public static final String MOD_ID = "agriculture";
 	public static final String MOD_VERSION = "1.0.0";
-	public static final String CONFIG_FORMAT = "a";
+	public static final String CONFIG_FORMAT = "AAAA";
 
 	public static final Registrate REGISTRATE = Registrate.create(MOD_ID);
 
