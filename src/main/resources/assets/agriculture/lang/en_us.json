@@ -2,8 +2,32 @@
   "itemgroup.agriculture": "Tywragriculture",
 
   "item.agriculture.": "",
+  "item.agriculture.briquette": "Briquette",
+  "item.agriculture.cake_slice": "Cake Slice",
+  "item.agriculture.strawberry": "Strawberries",
+  "item.agriculture.purple_carrot": "Purple Carrot",
+  "item.agriculture.black_carrot": "Black Carrot",
+  "item.agriculture.sweet_potato": "Sweet Potato",
+  "item.agriculture.pineapple": "Whole Pineapple",
+  "item.agriculture.pineapple_slice": "Pineapple Slice",
+  "item.agriculture.tomato": "Tomato",
+  "item.agriculture.tomato_seeds": "Tomato Seeds",
+  "item.agriculture.rotten_tomato": "Rotten Tomato",
+  "item.agriculture.cabbage": "Cabbage",
+  "item.agriculture.cabbage_leaf": "Cabbage Leaf",
+
+  "item.minecraft.melon_seeds": "Watermelon Seeds",
+  "item.minecraft.melon_slice": "Watermelon Slice",
+  "item.minecraft.glistering_melon_slice": "Glistering Watermelon Slice",
 
   "block.agriculture.": "",
+
+  "block.minecraft.melon": "Watermelon",
+  "block.minecraft.melon_stem": "Watermelon Stem",
+  "block.minecraft.attached_melon_stem": "Attached Watermelon Stem",
+
+  "tip.agriculture.":  "",
+  "tip.agriculture.strawberries":  "Strawberries provide a quick and easy source of food!",
 
   "advancement.agriculture.title.": "",
   "advancement.agriculture.title.iatethiswow": "I wonder what happens if I-",

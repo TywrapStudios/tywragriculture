@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "agriculture:block/pea_crop/pea_crop_stage3"
+  }
+}

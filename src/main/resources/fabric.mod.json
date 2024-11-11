@@ -5,14 +5,15 @@
 	"name": "Tywragriculture",
 	"description": "",
 	"authors": [
-		"Tywrap Studios"
+		"Tywrap Studios:",
+		">> Tiazzz - Coding, Art"
 	],
 	"contact": {
 		"homepage": "",
 		"sources": ""
 	},
 	"license": "MIT",
-	"icon": "assets/agriculture/icons/icon.png",
+	"icon": "assets/agriculture/icons/agriculture_mod_icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -39,6 +40,6 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"another-mod": "*"
+		"farmersdelight": "*"
 	}
 }
