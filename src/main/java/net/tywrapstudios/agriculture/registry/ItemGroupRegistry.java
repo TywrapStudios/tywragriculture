@@ -1,4 +1,4 @@
-package net.tywrapstudios.agriculture.content.item;
+package net.tywrapstudios.agriculture.registry;
 
 import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.entry.RegistryEntry;
@@ -11,8 +11,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.tywrapstudios.agriculture.Tywragriculture;
+import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
 
-public class ModItemGroup {
+public class ItemGroupRegistry {
 
     public static void registerItemGroup(Registrate REGISTRATE) {
         final ItemGroup AGRICULTURE_MAIN = Registry.register(Registries.ITEM_GROUP,
@@ -24,5 +25,6 @@ public class ModItemGroup {
                                 entries.add(item.get());
                             }
                         }).build());
+        LoggingHandlers.debug("Item group has been registered.");
     }
 }
