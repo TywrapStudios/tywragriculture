@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "agriculture:block/sink/sink_bottom",
+    "side": "agriculture:block/sink/sink_side",
+    "top": "agriculture:block/sink/sink_top"
+  }
+}

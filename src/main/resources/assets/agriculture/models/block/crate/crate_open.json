@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/cube_bottom_top",
+	"textures": {
+		"bottom": "agriculture:block/crate/crate_bottom",
+		"side": "agriculture:block/crate/crate_side",
+		"top": "agriculture:block/crate/crate_top_open"
+	}
+}
