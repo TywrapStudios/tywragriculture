@@ -2,7 +2,7 @@ package net.tywrapstudios.agriculture.content.block.crops;
 
 import net.minecraft.item.ItemConvertible;
 import net.tywrapstudios.agriculture.api.agedcropblocks.Age6CropBlock;
-import net.tywrapstudios.agriculture.content.item.ItemRegistry;
+import net.tywrapstudios.agriculture.registry.ItemRegistry;
 
 public class BlackCarrotCrop extends Age6CropBlock {
     public BlackCarrotCrop(Settings settings) {

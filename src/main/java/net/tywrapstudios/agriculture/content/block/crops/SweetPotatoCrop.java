@@ -2,7 +2,7 @@ package net.tywrapstudios.agriculture.content.block.crops;
 
 import net.minecraft.block.PotatoesBlock;
 import net.minecraft.item.ItemConvertible;
-import net.tywrapstudios.agriculture.content.item.ItemRegistry;
+import net.tywrapstudios.agriculture.registry.ItemRegistry;
 
 public class SweetPotatoCrop extends PotatoesBlock {
     public SweetPotatoCrop(Settings settings) {
