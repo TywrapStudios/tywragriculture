@@ -5,6 +5,7 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Blocks;
 import net.tywrapstudios.agriculture.content.block.crops.*;
+import net.tywrapstudios.agriculture.content.block.kitchen.*;
 import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
 
 public class BlockRegistry {
@@ -16,6 +17,10 @@ public class BlockRegistry {
     public static RegistryEntry<SweetPotatoCrop> SWEET_POTATO;
     public static RegistryEntry<StrawberryBush> STRAWBERRY_BUSH;
     public static RegistryEntry<PeaCrop> PEA_CROP;
+    // TODO:
+    public static RegistryEntry<CrateBlock> CRATE;
+    public static RegistryEntry<OvenBlock> OVEN;
+    public static RegistryEntry<SinkBlock> SINK;
 
     public static void registerModBlocks(Registrate REGISTRATE) {
         BLACK_CARROT = REGISTRATE.block("black_carrot_crop", p -> new BlackCarrotCrop(FabricBlockSettings
