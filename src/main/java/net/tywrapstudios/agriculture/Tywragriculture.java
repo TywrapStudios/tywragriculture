@@ -51,9 +51,7 @@ public class Tywragriculture implements ModInitializer {
 	}
 
 	public static void registerCommands() {
-		CommandRegistrationCallback.EVENT.register((dispatcher, dedicated, registrationEnvironment) -> {
-			AgricultureCommand.register(dispatcher);
-		});
+		CommandRegistrationCallback.EVENT.register((dispatcher, dedicated, registrationEnvironment) -> AgricultureCommand.register(dispatcher));
 		LoggingHandlers.debug("Commands have been registered.");
 	}
 }

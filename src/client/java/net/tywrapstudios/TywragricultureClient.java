@@ -6,10 +6,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.CropBlock;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.data.client.Models;
-import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
-import net.tywrapstudios.agriculture.registry.BlockRegistry;
 
 import static net.tywrapstudios.agriculture.Tywragriculture.REGISTRATE;
 

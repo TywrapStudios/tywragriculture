@@ -21,15 +21,12 @@ public class AgricultureCommand {
         dispatcher.register(CommandManager.literal("agriculture")
                 .executes(AgricultureCommand::executePlain)
                 .then(CommandManager.literal("reload")
-                        .executes(AgricultureCommand::reload).requires((source) -> {
-                            return source.hasPermissionLevel(2);}))
+                        .executes(AgricultureCommand::reload).requires((source) -> source.hasPermissionLevel(2)))
                 .then(CommandManager.literal("dump_config")
                         .executes(AgricultureCommand::dumpConfig)));
     }
 
     private static int executePlain(@NotNull CommandContext<ServerCommandSource> context) {
-        Config config = ConfigManager.config;
-
         ServerCommandSource source = context.getSource();
         boolean FD_LOADED = FabricLoader.getInstance().isModLoaded("farmersdelight");
         String message = String.format("""
@@ -37,23 +34,17 @@ public class AgricultureCommand {
                     > Mod Version: %s
                     > Farmer's Delight loaded: %s
                     -----------------------""", Tywragriculture.MOD_VERSION, FD_LOADED);
-        source.sendFeedback(() -> {
-            return Text.literal(message).formatted(Formatting.GOLD);
-        }, false);
+        source.sendFeedback(() -> Text.literal(message).formatted(Formatting.GOLD), false);
         return 1;
     }
 
     private static int reload(@NotNull CommandContext<ServerCommandSource> context) {
         ServerCommandSource source = context.getSource();
         if (Objects.equals(ConfigManager.config.format_version, Tywragriculture.CONFIG_FORMAT)) {
-            source.sendFeedback(() -> {
-                return Text.literal("[Tywragriculture] Reloading!").formatted(Formatting.GRAY);
-            }, true);
+            source.sendFeedback(() -> Text.literal("[Tywragriculture] Reloading!").formatted(Formatting.GRAY), true);
             ConfigManager.reloadConfig(context);
         } else {
-            source.sendFeedback(() -> {
-                return Text.literal("[Tywragriculture] Could not reload Config: Format Version out of sync, please delete your config file and rerun Minecraft.") .formatted(Formatting.RED);
-            }, false);
+            source.sendFeedback(() -> Text.literal("[Tywragriculture] Could not reload Config: Format Version out of sync, please delete your config file and rerun Minecraft.") .formatted(Formatting.RED), false);
             LoggingHandlers.error("[Config] Your Config Version is out of Sync, please delete your config file and reload Minecraft.");
         }
         return 1;
@@ -73,9 +64,7 @@ public class AgricultureCommand {
                         "right_click_harvest": %s
                     }
                     -----------------------""", config.format_version, config.util_config.debug_mode, config.util_config.suppress_warns, config.world_config.right_click_harvest);
-        source.sendFeedback(() -> {
-            return Text.literal(message).formatted(Formatting.GRAY);
-        }, false);
+        source.sendFeedback(() -> Text.literal(message).formatted(Formatting.GRAY), false);
         return 1;
     }
 }
