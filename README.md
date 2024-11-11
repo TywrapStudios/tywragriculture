@@ -1,11 +1,42 @@
 # Tywragriculture
+A mod aimed to build onto Minecraft's farming and food gathering vibe, adding new crops, dishes, drinks and so much more to see! (and eat :D)
 
-Tywragriculture is a mod aimed to build onto Minecraft's farming vibe, adding new crops, dishes, drinks and so much more to see!
--
-As well as adding our own content, we provide an API for people wanting to make addons on the mod!
-
-This will get Farmer's Delight Compat later, as that will probably stay the main focus farming mod, and this mod adds a lot of similar mechanics, crops and items.
-
+---
+### So, just for good measure, and in fashion of our mods, let's list some core features in this mod (in no particular order):
+- New Foods, Dishes, Drinks, and many more types of consumables!
+- New Crops.
+- A very small API.
+- Extra utensil blocks like the Crate and the Sink!
+- The `/agriculture` command, which displays some minimal info of your current setting!
+  - `/agriculture dump_config` shows ALL the Config settings you currently have!
+  - `/agriculture reload` reloads all the Config settings that don't need an entire re-run of Minecraft.
+- A more robust way of handling logging, falling in line with options in Config. Such as Debug mode and Suppress Warns!
+---
+### A very simple Config System is also included!:
+```json5
+{ 
+  /* Psst, this is a README Comment!*/
+  /* All the values in here are the default values.*/
+  "format_version": "AAAA", /*This is some internal stuff, don't touch nor worry about it.*/
+  // Several configurations for utility features.
+  "util_config": {
+    // Whether to display debug information in the console.
+    "debug_mode": false,
+    // Whether to suppress all warnings from this mod. NOT RECOMMENDED.
+    "suppress_warns": false
+  },
+  // Several configurations for in-world features.
+  "world_config": {
+    // Whether to allow right-clicking to harvest crops.
+    "right_click_harvest": true
+  }
+}
+```
 > [!NOTE]
-This mod is very similar to Farmer's Delight. And I am aware of that. It is NOT an exact copy.
-It also aims to add extra original features not present in FD.
+> This file can be found at `.../config/tywragriculture.json5`.
+---
+### Extra info:
+> [!NOTE]
+> This mod could maybe be addressed as "very similar to Farmer's Delight". And I am aware of that. Though note it is NOT an exact copy.  
+> We aim to add extra, original, features that are not present in FD.  
+> Some type of Compat with FD is planned though, so look forward to that I guess.
