@@ -1,12 +1,8 @@
 package net.tywrapstudios.agriculture.mixin;
 
-import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.tywrapstudios.agriculture.config.Config;
-import net.tywrapstudios.agriculture.config.ConfigManager;
-import net.tywrapstudios.agriculture.content.block.BlockRegistry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 
