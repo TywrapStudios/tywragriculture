@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "agriculture:pea_shell"
+    }
+  ],
+  "result": {
+    "item": "agriculture:peas",
+    "count": 2
+  }
+}
