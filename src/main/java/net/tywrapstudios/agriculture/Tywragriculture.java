@@ -2,10 +2,12 @@ package net.tywrapstudios.agriculture;
 
 import com.tterrag.registrate.Registrate;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
-import net.tywrapstudios.agriculture.content.block.BlockRegistry;
-import net.tywrapstudios.agriculture.content.item.ItemRegistry;
-import net.tywrapstudios.agriculture.content.item.ModItemGroup;
+import net.tywrapstudios.agriculture.content.command.AgricultureCommand;
+import net.tywrapstudios.agriculture.registry.BlockRegistry;
+import net.tywrapstudios.agriculture.registry.ItemRegistry;
+import net.tywrapstudios.agriculture.registry.ItemGroupRegistry;
 import net.tywrapstudios.agriculture.config.ConfigManager;
 import net.tywrapstudios.agriculture.resources.Fuels;
 import net.tywrapstudios.agriculture.util.RandomComments;
@@ -18,6 +20,7 @@ public class Tywragriculture implements ModInitializer {
 	public static final Logger DEBUG = LoggerFactory.getLogger("Tywragriculture-DEBUG");
 	public static final String MOD_ID = "agriculture";
 	public static final String MOD_VERSION = "1.0.0";
+	public static final String CONFIG_FORMAT = "a";
 
 	public static final Registrate REGISTRATE = Registrate.create(MOD_ID);
 
@@ -28,13 +31,10 @@ public class Tywragriculture implements ModInitializer {
 		ConfigManager.loadConfig();
 
 		ItemRegistry.registerModItems(REGISTRATE);
-		LoggingHandlers.debug("Items have been registered.");
 		BlockRegistry.registerModBlocks(REGISTRATE);
-		LoggingHandlers.debug("Blocks have been registered.");
 		Fuels.register();
-		LoggingHandlers.debug("Fuels have been registered.");
-		ModItemGroup.registerItemGroup(REGISTRATE);
-		LoggingHandlers.debug("Item group has been registered.");
+		ItemGroupRegistry.registerItemGroup(REGISTRATE);
+		registerCommands();
 
 		REGISTRATE.register();
 		LoggingHandlers.debug("General REGISTRATE has been registered.");
@@ -48,5 +48,12 @@ public class Tywragriculture implements ModInitializer {
 		if (FD_LOADED) {
 			LoggingHandlers.debug(">>version: " + FabricLoader.getInstance().getModContainer("farmersdelight").get().getMetadata().getVersion().getFriendlyString());
 		}
+	}
+
+	public static void registerCommands() {
+		CommandRegistrationCallback.EVENT.register((dispatcher, dedicated, registrationEnvironment) -> {
+			AgricultureCommand.register(dispatcher);
+		});
+		LoggingHandlers.debug("Commands have been registered.");
 	}
 }
