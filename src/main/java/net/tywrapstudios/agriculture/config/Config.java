@@ -15,7 +15,7 @@ public class Config {
     public UtilConfig util_config = new UtilConfig();
     public static class UtilConfig {
         @Comment("Whether to display debug information in the console.")
-        public boolean debug_mode = true;
+        public boolean debug_mode = true; // TODO: DON'T FORGET TO MAKE THIS false
         @Comment("Whether to suppress all warnings from this mod. NOT RECOMMENDED.")
         public boolean suppress_warns = false;
     }
