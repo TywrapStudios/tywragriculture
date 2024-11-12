@@ -1,6 +1,10 @@
 {
   "itemgroup.agriculture": "Tywragriculture",
 
+  "container.agriculture.": "",
+  "container.agriculture.oven": "Oven",
+  "container.agriculture.crate": "Crate",
+
   "item.agriculture.": "",
   "item.agriculture.briquette": "Briquette",
   "item.agriculture.cake_slice": "Cake Slice",

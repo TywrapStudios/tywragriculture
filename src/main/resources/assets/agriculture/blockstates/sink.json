@@ -1,23 +1,7 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "agriculture:sink",
-      "x": 90,
-      "y": 90
-    },
-    "facing=north": {
-      "model": "agriculture:sink",
-      "x": 90
-    },
-    "facing=south": {
-      "model": "agriculture:sink",
-      "x": 90,
-      "y": 180
-    },
-    "facing=west": {
-      "model": "agriculture:sink",
-      "x": 90,
-      "y": 270
+    "": {
+      "model": "agriculture:block/sink"
     }
   }
 }

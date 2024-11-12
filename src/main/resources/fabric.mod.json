@@ -3,7 +3,7 @@
 	"id": "agriculture",
 	"version": "${version}",
 	"name": "Tywragriculture",
-	"description": "",
+	"description": "A mod aimed to build onto Minecraft's farming and food gathering vibe, adding new crops, dishes, drinks and so much more to see! (and eat :D)",
 	"authors": [
 		"Tywrap Studios:",
 		">> Tiazzz - Coding, Art"
@@ -40,6 +40,6 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"farmersdelight": "*"
+		"farmersdelight": ">=1.20.1-2.0.0+refabricated"
 	}
 }
