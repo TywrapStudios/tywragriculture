@@ -1,7 +1,6 @@
-package net.tywrapstudios.agriculture.resources;
+package net.tywrapstudios.agriculture.registry;
 
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.tywrapstudios.agriculture.registry.ItemRegistry;
 import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
 
 public class Fuels {

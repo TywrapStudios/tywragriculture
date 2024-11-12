@@ -17,7 +17,6 @@ public class BlockRegistry {
     public static RegistryEntry<SweetPotatoCrop> SWEET_POTATO;
     public static RegistryEntry<StrawberryBush> STRAWBERRY_BUSH;
     public static RegistryEntry<PeaCrop> PEA_CROP;
-    // TODO:
     public static RegistryEntry<CrateBlock> CRATE;
     public static RegistryEntry<OvenBlock> OVEN;
     public static RegistryEntry<SinkBlock> SINK;
@@ -41,6 +40,16 @@ public class BlockRegistry {
         PEA_CROP = REGISTRATE.block("pea_crop", p -> new PeaCrop(FabricBlockSettings
                         .copyOf(Blocks.WHEAT)))
                 .register();
+        CRATE = REGISTRATE.block("crate", CrateBlock::new)
+                .simpleItem()
+                .register();
+        OVEN = REGISTRATE.block("oven", OvenBlock::new)
+                .simpleItem()
+                .register();
+        SINK = REGISTRATE.block("sink", SinkBlock::new)
+                .simpleItem()
+                .register();
+
 
         registerFDInspiredBlocks(REGISTRATE);
         LoggingHandlers.debug("Blocks have been registered.");
