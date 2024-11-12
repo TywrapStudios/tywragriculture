@@ -5,8 +5,8 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
-import net.tywrapstudios.agriculture.content.item.custom.BriquetteItem;
-import net.tywrapstudios.agriculture.content.item.custom.RottenTomatoItem;
+import net.tywrapstudios.agriculture.content.item.kitchen.BriquetteItem;
+import net.tywrapstudios.agriculture.content.item.foodstuffs.RottenTomatoItem;
 import net.tywrapstudios.agriculture.resources.FoodComponents;
 import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
 

@@ -1,4 +1,4 @@
-package net.tywrapstudios.agriculture.content.item.custom;
+package net.tywrapstudios.agriculture.content.item.kitchen;
 
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;

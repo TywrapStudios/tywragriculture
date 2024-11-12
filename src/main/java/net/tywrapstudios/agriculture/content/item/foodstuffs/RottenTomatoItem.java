@@ -1,4 +1,4 @@
-package net.tywrapstudios.agriculture.content.item.custom;
+package net.tywrapstudios.agriculture.content.item.foodstuffs;
 
 import net.minecraft.item.SnowballItem;
 
