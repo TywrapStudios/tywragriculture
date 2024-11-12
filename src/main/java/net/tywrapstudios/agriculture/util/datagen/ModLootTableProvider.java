@@ -13,24 +13,5 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
 //      addDrop(BLOCK);
-//        LootCondition.Builder condition1$builder =
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
