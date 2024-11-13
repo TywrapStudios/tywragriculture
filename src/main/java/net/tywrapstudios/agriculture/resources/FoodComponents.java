@@ -3,15 +3,15 @@ package net.tywrapstudios.agriculture.resources;
 import net.minecraft.item.FoodComponent;
 
 public enum FoodComponents {
-    CAKE_SLICE_FOOD(new FoodComponent.Builder().hunger(8).saturationModifier(0.2f).build()),
-    STRAWBERRY(new FoodComponent.Builder().hunger(2).saturationModifier(0.2f).snack().build()),
-    TOMATO(new FoodComponent.Builder().hunger(3).saturationModifier(0.3f).build()),
-    CARROT_PURPLE(new FoodComponent.Builder().hunger(4).saturationModifier(0.3f).build()),
-    CARROT_BLACK(new FoodComponent.Builder().hunger(4).saturationModifier(0.3f).build()),
-    SWEET_POTATO(new FoodComponent.Builder().hunger(5).saturationModifier(0.4f).build()),
-    PINEAPPLE_SLICE(new FoodComponent.Builder().hunger(4).saturationModifier(0.4f).build()),
-    WHITE_MELON(new FoodComponent.Builder().hunger(5).saturationModifier(0.4f).build()),
-    ORANGE_MELON(new FoodComponent.Builder().hunger(5).saturationModifier(0.4f).build());
+    CAKE_SLICE_FOOD(simple(8, 0.2f)),
+    STRAWBERRY(simpleBuilder(2, 0.2f).snack().build()),
+    TOMATO(simple(3, 0.3f)),
+    CARROT_PURPLE(simple(4, 0.3f)),
+    CARROT_BLACK(simple(4, 0.3f)),
+    SWEET_POTATO(simple(5, 0.4f)),
+    PINEAPPLE_SLICE(simple(4, 0.4f)),
+    WHITE_MELON(simple(5, 0.4f)),
+    ORANGE_MELON(simple(5, 0.4f));
 
     private final FoodComponent foodComponent;
 
@@ -21,5 +21,13 @@ public enum FoodComponents {
 
     public FoodComponent get() {
         return foodComponent;
+    }
+
+    private static FoodComponent simple(int hunger, float saturationModifier) {
+        return simpleBuilder(hunger, saturationModifier).build();
+    }
+
+    private static FoodComponent.Builder simpleBuilder(int hunger, float saturationModifier) {
+        return new FoodComponent.Builder().hunger(hunger).saturationModifier(saturationModifier);
     }
 }
