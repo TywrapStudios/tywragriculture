@@ -13,7 +13,7 @@ public class TywragricultureDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-		ExistingFileHelper helper = ExistingFileHelper.withResources();
+		//ExistingFileHelper helper = ExistingFileHelper.withResources();
 
 		pack.addProvider(ModBlockTagProvider::new);
 		pack.addProvider(ModItemTagProvider::new);
@@ -21,6 +21,6 @@ public class TywragricultureDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
 
-		Tywragriculture.REGISTRATE.setupDatagen(pack, helper);
+		//Tywragriculture.REGISTRATE.setupDatagen(pack, helper);
 	}
 }
