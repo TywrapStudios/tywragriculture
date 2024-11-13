@@ -28,8 +28,8 @@ public class ConfigManager {
                 config = jankson.fromJson(jankson.load(configFile), Config.class);
                 LoggingHandlers.info("[Config] Loaded configuration file.");
             } catch (IOException | SyntaxError e) {
-                e.printStackTrace();
                 LoggingHandlers.error("[Config] Error loading configuration file; using default values.");
+                e.printStackTrace();
                 config = new Config();
             }
         } else {
@@ -48,8 +48,8 @@ public class ConfigManager {
                 LoggingHandlers.info("[Config] Reloaded configuration file.");
                 source.sendFeedback(() -> Text.literal("[Config] Reloaded configuration file.").formatted(Formatting.GRAY), true);
             } catch (IOException | SyntaxError e) {
-                e.printStackTrace();
                 LoggingHandlers.error("[Config] Error loading configuration file; using default values.");
+                e.printStackTrace();
                 source.sendFeedback(() -> Text.literal("[Config] Error loading configuration file; using default values.").formatted(Formatting.RED), true);
                 config = new Config();
             }
@@ -61,7 +61,7 @@ public class ConfigManager {
             source.sendFeedback(() -> Text.literal("""
                     [Config] No configuration file found, created new one.
                     [Config] `.../config/tywragriculture.json5`.""").formatted(Formatting.GRAY), true);
-            source.sendFeedback(() -> Text.literal("[Config] Note that this generally shouldn't be happening, a file should be made and available before your run!").formatted(Formatting.RED), true);
+            source.sendFeedback(() -> Text.literal("[Config] Note that this generally shouldn't be happening, a file should be made and available before your run!").formatted(Formatting.GOLD), true);
             saveConfig();
         }
     }
