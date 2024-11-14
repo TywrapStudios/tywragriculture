@@ -38,7 +38,7 @@ public class TomatoShrub extends Age4CropBlock {
             world.playSound(null, pos,
                     SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES,
                     SoundCategory.BLOCKS, 1f, 0.8f);
-            world.setBlockState(pos, state.with(getAgeProperty(), 0));
+            world.setBlockState(pos, state.with(getAgeProperty(), 3));
 
             return ActionResult.SUCCESS;
         } else {
