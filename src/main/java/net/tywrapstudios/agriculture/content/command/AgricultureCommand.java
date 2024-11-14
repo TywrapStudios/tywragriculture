@@ -55,15 +55,19 @@ public class AgricultureCommand {
         Config config = ConfigManager.config;
         String message = String.format("""
                     --------[Config]---------
-                    "format_version": "%s"
-                    "util_config": {
-                        "debug_mode": %s
-                        "suppress_warns": %s
+                    format_version: "%s"
+                    util_config: {
+                        debug_mode: %s
+                        suppress_warns: %s
                     }
-                    "world_config": {
-                        "right_click_harvest": %s
+                    world_config: {
+                        right_click_harvest: %s
                     }
-                    -----------------------""", config.format_version, config.util_config.debug_mode, config.util_config.suppress_warns, config.world_config.right_click_harvest);
+                    -----------------------""",
+                config.format_version,
+                config.util_config.debug_mode,
+                config.util_config.suppress_warns,
+                config.world_config.right_click_harvest);
         source.sendFeedback(() -> Text.literal(message).formatted(Formatting.GRAY), false);
         return 1;
     }
