@@ -17,7 +17,7 @@ import net.tywrapstudios.agriculture.content.block.kitchen.abstracts.AbstractOve
 import net.tywrapstudios.agriculture.screen.slot.OvenFuelSlot;
 import net.tywrapstudios.agriculture.screen.slot.OvenOutputSlot;
 
-public class AbstractOvenScreenHandler extends AbstractRecipeScreenHandler<Inventory> {
+public abstract class AbstractOvenScreenHandler extends AbstractRecipeScreenHandler<Inventory> {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
     protected final World world;

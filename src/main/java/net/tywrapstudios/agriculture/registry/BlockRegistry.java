@@ -42,12 +42,15 @@ public class BlockRegistry {
                 .register();
         CRATE = REGISTRATE.block("crate", CrateBlock::new)
                 .simpleItem()
+                .lang("Crate")
                 .register();
         OVEN = REGISTRATE.block("oven", OvenBlock::new)
                 .simpleItem()
+                .lang("Oven")
                 .register();
         SINK = REGISTRATE.block("sink", SinkBlock::new)
                 .simpleItem()
+                .lang("Sink")
                 .register();
 
 

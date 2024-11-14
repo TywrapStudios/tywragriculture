@@ -22,11 +22,10 @@ public abstract class CropBlockMixin extends PlantBlock implements Fertilizable 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         BlockState oldState = world.getBlockState(pos);
         if (!ConfigManager.config.world_config.right_click_harvest || player.getStackInHand(hand).isOf(Items.BONE_MEAL) || player.isSneaking() || !(oldState.getBlock() instanceof CropBlock block) ) {
-            player.swingHand(hand);
             return ActionResult.PASS;
         } else  {
             if (block.isMature(oldState)) {
-                world.breakBlock(pos, true);
+                world.breakBlock(pos, true, player);
             }
             world.setBlockState(pos, block.getPlacementState(new ItemPlacementContext(world, player, hand, player.getStackInHand(hand), hit)));
             player.swingHand(hand);

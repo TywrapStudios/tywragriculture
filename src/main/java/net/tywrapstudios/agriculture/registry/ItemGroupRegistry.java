@@ -18,7 +18,7 @@ public class ItemGroupRegistry {
     public static void registerItemGroup(Registrate REGISTRATE) {
         final ItemGroup AGRICULTURE_MAIN = Registry.register(Registries.ITEM_GROUP,
                 new Identifier(Tywragriculture.MOD_ID, "agriculture"), FabricItemGroup.builder()
-                        .displayName(Text.translatable("itemgroup.agriculture"))
+                        .displayName(Text.translatable("itemgroup.agriculture.main"))
                         .icon(() -> new ItemStack(ItemRegistry.SWEET_POTATOES.get()))
                         .entries((displayContext, entries) -> {
                             for (RegistryEntry<Item> item : REGISTRATE.getAll(Registries.ITEM.getKey())) {

@@ -33,39 +33,49 @@ public class ItemRegistry {
     public static void registerModItems(Registrate REGISTRATE) {
         BRIQUETTE = REGISTRATE.item("briquette", BriquetteItem::new)
                 .defaultModel()
+                .lang("Briquette")
                 .register();
         CAKE_SLICE = REGISTRATE.item("cake_slice", p -> new Item(new FabricItemSettings()
                         .food(CAKE_SLICE_FOOD.get())))
                 .defaultModel()
+                .lang("Cake Slice")
                 .register();
         STRAWBERRIES = REGISTRATE.item("strawberry", p -> new AliasedBlockItem(BlockRegistry.STRAWBERRY_BUSH.get(), new FabricItemSettings()
                         .food(STRAWBERRY.get())))
                 .defaultModel()
+                .lang("Strawberry")
                 .register();
         PURPLE_CARROT = REGISTRATE.item("purple_carrot", p -> new AliasedBlockItem(BlockRegistry.PURPLE_CARROT.get(), new FabricItemSettings()
                         .food(CARROT_PURPLE.get())))
                 .defaultModel()
+                .lang("Purple Carrot")
                 .register();
         BLACK_CARROT = REGISTRATE.item("black_carrot", p -> new AliasedBlockItem(BlockRegistry.BLACK_CARROT.get(), new FabricItemSettings()
                         .food(CARROT_BLACK.get())))
                 .defaultModel()
+                .lang("Black Carrot")
                 .register();
         SWEET_POTATOES = REGISTRATE.item("sweet_potato", p -> new AliasedBlockItem(BlockRegistry.SWEET_POTATO.get(), new FabricItemSettings()
                         .food(SWEET_POTATO.get())))
                 .defaultModel()
+                .lang("Sweet Potato")
                 .register();
         PINEAPPLES = REGISTRATE.item("pineapple", Item::new)
                 .defaultModel()
+                .lang("Whole Pineapple")
                 .register();
         PINEAPPLE_SLICE = REGISTRATE.item("pineapple_slice", p -> new Item(new FabricItemSettings()
                         .food(FoodComponents.PINEAPPLE_SLICE.get())))
                 .defaultModel()
+                .lang("Pineapple Slice")
                 .register();
         PEA_SHELL = REGISTRATE.item("pea_shell", Item::new)
                 .defaultModel()
+                .lang("Pea Shell")
                 .register();
         PEAS = REGISTRATE.item("peas", p -> new AliasedBlockItem(BlockRegistry.PEA_CROP.get(), new FabricItemSettings()))
                 .defaultModel()
+                .lang("Peas")
                 .register();
 
         registerFDInspiredItems(REGISTRATE);
@@ -76,18 +86,23 @@ public class ItemRegistry {
         TOMATOES = REGISTRATE.item("tomato", p -> new Item(new FabricItemSettings()
                         .food(TOMATO.get())))
                 .defaultModel()
+                .lang("Tomato")
                 .register();
         TOMATO_SEEDS = REGISTRATE.item("tomato_seeds", p -> new AliasedBlockItem(BlockRegistry.TOMATO_PLANT.get(), new FabricItemSettings()))
                 .defaultModel()
+                .lang("Tomato Seeds")
                 .register();
         ROTTEN_TOMATOES = REGISTRATE.item("rotten_tomato", RottenTomatoItem::new)
                 .defaultModel()
+                .lang("Rotten Tomato")
                 .register();
         CABBAGES = REGISTRATE.item("cabbage", Item::new)
                 .defaultModel()
+                .lang("Cabbage")
                 .register();
         CABBAGE_LEAVES = REGISTRATE.item("cabbage_leaf", Item::new)
                 .defaultModel()
+                .lang("Cabbage Leaf")
                 .register();
     }
 }
