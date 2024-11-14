@@ -34,6 +34,13 @@ public class LoggingHandlers {
         }
     }
 
+    public static void literalDebug(String message) {
+        Config config = ConfigManager.config;
+        if (config.util_config.debug_mode) {
+            debug.debug(message);
+        }
+    }
+
     public static void debugWarning(String message) {
         Config config = ConfigManager.config;
         if (config.util_config.debug_mode&&!config.util_config.suppress_warns) {
