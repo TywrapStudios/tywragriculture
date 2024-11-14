@@ -5,7 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.tywrapstudios.agriculture.config.ConfigManager;
 import net.tywrapstudios.agriculture.registry.Registry;
-import net.tywrapstudios.agriculture.util.RandomComments;
+import net.tywrapstudios.agriculture.util.Util;
 import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class Tywragriculture implements ModInitializer {
 	public void onInitialize() {
 		// Init values
 		boolean FD_LOADED = FabricLoader.getInstance().isModLoaded("farmersdelight");
-		MOD_VERSION = FabricLoader.getInstance().getModContainer("agriculture").get().getMetadata().getVersion().getFriendlyString();
+		MOD_VERSION = Util.getModVer("agriculture");
 		// Config
 		CONFIG_FORMAT = "AAAA";
 		ConfigManager.loadConfig();
@@ -36,13 +36,13 @@ public class Tywragriculture implements ModInitializer {
 		Registry.registerAll(REGISTRATE);
 		// Init Info Logs
 		LoggingHandlers.info("Mod has loaded.");
-		LoggingHandlers.info(RandomComments.generateInitComment());
+		LoggingHandlers.info(Util.generateInitPhrase());
 		LoggingHandlers.debug("Mod version: " + MOD_VERSION);
 		LoggingHandlers.debug("Mod ID: " + MOD_ID);
-		LoggingHandlers.debug("Fabric Loader version: " + FabricLoader.getInstance().getModContainer("fabricloader").get().getMetadata().getVersion().getFriendlyString());
+		LoggingHandlers.debug("Fabric Loader version: " + Util.getModVer("fabricloader"));
 		LoggingHandlers.debug("Farmer's Delight loaded: " + FD_LOADED);
 		if (FD_LOADED) {
-			LoggingHandlers.debug(">>version: " + FabricLoader.getInstance().getModContainer("farmersdelight").get().getMetadata().getVersion().getFriendlyString());
+			LoggingHandlers.debug(">>version: " + Util.getModVer("farmersdelight"));
 		}
 	}
 }
