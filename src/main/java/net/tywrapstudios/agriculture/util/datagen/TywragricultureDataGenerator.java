@@ -17,8 +17,7 @@ public class TywragricultureDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
 
-
-		ExistingFileHelper helper = ExistingFileHelper.withResources();
+		ExistingFileHelper helper = ExistingFileHelper.withResources(fabricDataGenerator.getModContainer().getRootPaths().get(1));
 		Tywragriculture.REGISTRATE.setupDatagen(pack, helper);
 	}
 }

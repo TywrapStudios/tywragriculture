@@ -20,7 +20,7 @@
           "net.tywrapstudios.agriculture.Tywragriculture"
 		],
 		"client": [
-			"net.tywrapstudios.TywragricultureClient"
+			"net.tywrapstudios.agriculture.TywragricultureClient"
 		],
 		"fabric-datagen": [
           "net.tywrapstudios.agriculture.util.datagen.TywragricultureDataGenerator"
