@@ -1,43 +1,35 @@
 {
-  "itemgroup.agriculture": "Tywragriculture",
+  "itemgroup.agriculture.main": "Tywragriculture",
 
   "container.agriculture.": "",
   "container.agriculture.oven": "Oven",
   "container.agriculture.crate": "Crate",
 
-  "item.agriculture.": "",
-  "item.agriculture.briquette": "Briquette",
-  "item.agriculture.cake_slice": "Cake Slice",
-  "item.agriculture.strawberry": "Strawberries",
-  "item.agriculture.purple_carrot": "Purple Carrot",
-  "item.agriculture.black_carrot": "Black Carrot",
-  "item.agriculture.sweet_potato": "Sweet Potato",
-  "item.agriculture.pineapple": "Whole Pineapple",
-  "item.agriculture.pineapple_slice": "Pineapple Slice",
-  "item.agriculture.tomato": "Tomato",
-  "item.agriculture.tomato_seeds": "Tomato Seeds",
-  "item.agriculture.rotten_tomato": "Rotten Tomato",
-  "item.agriculture.cabbage": "Cabbage",
-  "item.agriculture.cabbage_leaf": "Cabbage Leaf",
-
   "item.minecraft.melon_seeds": "Watermelon Seeds",
   "item.minecraft.melon_slice": "Watermelon Slice",
   "item.minecraft.glistering_melon_slice": "Glistering Watermelon Slice",
-
-  "block.agriculture.": "",
 
   "block.minecraft.melon": "Watermelon",
   "block.minecraft.melon_stem": "Watermelon Stem",
   "block.minecraft.attached_melon_stem": "Attached Watermelon Stem",
 
   "tip.agriculture.":  "",
-  "tip.agriculture.strawberries":  "Strawberries provide a quick and easy source of food!",
+  "tip.agriculture.strawberries":  "Strawberries are a quick and easy source of food!",
+  "tip.agriculture.knives":  "Knives do extra damage from behind!",
+  "tip.agriculture.sink":  "The Sink Block provides an infinite source of water.",
+  "tip.agriculture.log_phrases":  "Did you know: a fun phrase is put in the logs whenever you launch Minecraft with this mod?",
+  "tip.agriculture.debug_mode":  "Enabling Debug Mode in the Config can be a nice way to find out some extra info.",
+  "tip.agriculture.right_click_harvest":  "You can right click any crop and it'll be harvested.",
+  "tip.agriculture.name":  "The name Tywragriculture came from \"Tywrap\" Studios and \"Agriculture\"!",
+  "tip.agriculture.jankson_errors":  "Don't report Jankson errors to them if it's actually our fault.",
+  "tip.agriculture.watermelon":  "Did you know: we replaced the Vanilla name of Melons to Watermelons?",
+  "tip.agriculture.ctd":  "Check out our other mod: Chat to Discord!",
+  "tip.agriculture.briquette":  "As delicious as it looks, don't eat the Briquette, ok?",
+  "tip.agriculture.tips":  "Did you even know you add your own tips with Resource Packs?",
 
   "advancement.agriculture.title.": "",
-  "advancement.agriculture.title.iatethiswow": "I wonder what happens if I-",
 
   "advancement.agriculture.description.": "",
-  "advancement.agriculture.description.iatethiswow": "Eat a piece of Briquette.",
 
   "": ""
 }
