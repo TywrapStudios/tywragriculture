@@ -25,6 +25,6 @@ public class ItemGroupRegistry {
                                 entries.add(item.get());
                             }
                         }).build());
-        LoggingHandlers.debug("Item group has been registered.");
+        LoggingHandlers.debug("ItemGroup has been registered.");
     }
 }

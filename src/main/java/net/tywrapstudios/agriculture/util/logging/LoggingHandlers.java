@@ -6,8 +6,8 @@ import net.tywrapstudios.agriculture.config.Config;
 import org.slf4j.Logger;
 
 public class LoggingHandlers {
-    static Logger logger = Tywragriculture.LOGGER;
-    static Logger debug = Tywragriculture.DEBUG;
+    static final Logger logger = Tywragriculture.LOGGER;
+    static final Logger debug = Tywragriculture.DEBUG;
 
     public static void info(String message) {
         logger.info(message);

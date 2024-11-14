@@ -3,12 +3,14 @@ package net.tywrapstudios.agriculture.registry;
 import com.tterrag.registrate.Registrate;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.tywrapstudios.agriculture.content.command.AgricultureCommand;
+import net.tywrapstudios.agriculture.resources.BlockEntityTypes;
 import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
 
 public class Registry {
     public static void registerAll(Registrate REGISTRATE) {
         ItemRegistry.registerModItems(REGISTRATE);
         BlockRegistry.registerModBlocks(REGISTRATE);
+        BlockEntityTypes.init();
         Fuels.register();
         ItemGroupRegistry.registerItemGroup(REGISTRATE);
         registerCommands();
