@@ -1,6 +1,7 @@
 package net.tywrapstudios.agriculture.config;
 
 import blue.endless.jankson.Comment;
+import net.tywrapstudios.agriculture.content.command.AgricultureCommand;
 
 /**
  * This is where the Configuration Options are defined, you can make use of {@link blue.endless.jankson.Comment} to add a // type comment to the file.
@@ -8,6 +9,8 @@ import blue.endless.jankson.Comment;
  * <br/> This is also considerably nicer for us to manage.
  * <br/>
  * <br/> I'd love to transfer over this system to all our other mods.
+ * <br/>
+ * <br/> DON'T FORGET TO TRANSFER NEW DETAILS OVER TO {@link AgricultureCommand} and {@code README}
  */
 public class Config {
     public String format_version = "AAAA";
