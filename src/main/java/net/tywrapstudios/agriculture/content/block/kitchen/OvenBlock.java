@@ -7,6 +7,11 @@ import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.Direction;
 
+/*
+TODO: Make our own fully Custom OvenBlock class, instead of extending FurnaceBlock
+ This includes RecipeType
+ Maybe make it an API thing
+*/
 public class OvenBlock extends FurnaceBlock {
     public static final DirectionProperty FACING;
     public static final BooleanProperty LIT;
