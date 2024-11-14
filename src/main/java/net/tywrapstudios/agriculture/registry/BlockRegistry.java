@@ -3,7 +3,12 @@ package net.tywrapstudios.agriculture.registry;
 import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
+import net.tywrapstudios.agriculture.Tywragriculture;
 import net.tywrapstudios.agriculture.content.block.crops.*;
 import net.tywrapstudios.agriculture.content.block.kitchen.*;
 import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
@@ -12,7 +17,9 @@ public class BlockRegistry {
 
     public static RegistryEntry<BlackCarrotCrop> BLACK_CARROT;
     public static RegistryEntry<PurpleCarrotCrop> PURPLE_CARROT;
-    public static RegistryEntry<GoldCarrotCrop> GOLD_CARROT;
+    public static final Block GOLD_CARROT = Registry.register(Registries.BLOCK, new Identifier(Tywragriculture.MOD_ID, "gold_carrot_crop"),
+            new GoldCarrotCrop(FabricBlockSettings
+                    .copyOf(Blocks.CARROTS)));
     public static RegistryEntry<TomatoShrub> TOMATO_PLANT;
     public static RegistryEntry<SweetPotatoCrop> SWEET_POTATO;
     public static RegistryEntry<StrawberryBush> STRAWBERRY_BUSH;
@@ -26,9 +33,6 @@ public class BlockRegistry {
                         .copyOf(Blocks.CARROTS)))
                 .register();
         PURPLE_CARROT = REGISTRATE.block("purple_carrot_crop", p -> new PurpleCarrotCrop(FabricBlockSettings
-                        .copyOf(Blocks.CARROTS)))
-                .register();
-        GOLD_CARROT = REGISTRATE.block("gold_carrot_crop", p -> new GoldCarrotCrop(FabricBlockSettings
                         .copyOf(Blocks.CARROTS)))
                 .register();
         SWEET_POTATO = REGISTRATE.block("sweet_potato_crop", p -> new SweetPotatoCrop(FabricBlockSettings
