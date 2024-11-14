@@ -1,4 +1,4 @@
-package net.tywrapstudios;
+package net.tywrapstudios.agriculture;
 
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.fabricmc.api.ClientModInitializer;
