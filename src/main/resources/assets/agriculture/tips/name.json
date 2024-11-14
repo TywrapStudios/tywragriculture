@@ -1,5 +1,8 @@
 {
   "tip": {
+    "text": "Tywragriculture Tips:",
+    "underlined": true,
+    "color": "yellow",
     "translate": "tip.agriculture.name"
   }
 }
