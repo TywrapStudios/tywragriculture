@@ -16,7 +16,16 @@ public class Util {
                 "garlic bread?",
                 "\"glorps glop bieb bobls\" - The Aliens saying this mod is fire",
                 "ORAJ POLE NA TRAKTORE HEY HOOP SJABADABA",
-                "Z-O-O-M, talk a lot on Twitter bish I'm not yo friend"
+                "Z-O-O-M, talk a lot on Twitter bish I'm not yo friend",
+                // Community phrases
+                "UwUwUwUwUwUwUwUwUwUwUwUwU - PGM",
+                "THE STORM IS COMING. Stub your little toe. - StendeSton",
+                "Hier heb ik geen actieve herinnering aan - Crabbiernote",
+                "Axolotls are better than @Tiazzzz - Axolotl <3",
+                "your soulmate is out there somewhere, but god is probably preventing the meetup. - HyperNova",
+                "On dit que pétrire c’est modeler , moi je dit que péter c’est démolir - PGM",
+                "Jus Monika - PGM",
+                "···· · ···· ·  −−··−−  −−· −−− − −·−· ···· ·− ~ PGM"
         );
 
         return INIT_PHRASES.get(new Random().nextInt(INIT_PHRASES.size()));
