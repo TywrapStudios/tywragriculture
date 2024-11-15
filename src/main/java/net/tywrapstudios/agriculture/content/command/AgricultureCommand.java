@@ -23,7 +23,8 @@ public class AgricultureCommand {
                 .then(CommandManager.literal("reload")
                         .executes(AgricultureCommand::reload).requires((source) -> source.hasPermissionLevel(2)))
                 .then(CommandManager.literal("dump_config")
-                        .executes(AgricultureCommand::dumpConfig)));
+                        .executes(AgricultureCommand::dumpConfig))
+        );
     }
 
     private static int executePlain(@NotNull CommandContext<ServerCommandSource> context) {
@@ -34,7 +35,7 @@ public class AgricultureCommand {
                     > Mod Version: %s
                     > Farmer's Delight loaded: %s
                     -----------------------""", Tywragriculture.MOD_VERSION, FD_LOADED);
-        source.sendFeedback(() -> Text.literal(message).formatted(Formatting.GOLD), false);
+        source.sendFeedback(() -> Text.literal(message).formatted(Formatting.GRAY), false);
         return 1;
     }
 
@@ -52,22 +53,11 @@ public class AgricultureCommand {
 
     private static int dumpConfig(@NotNull CommandContext<ServerCommandSource> context) {
         ServerCommandSource source = context.getSource();
-        Config config = ConfigManager.config;
         String message = String.format("""
                     --------[Config]---------
-                    format_version: "%s"
-                    util_config: {
-                        debug_mode: %s
-                        suppress_warns: %s
-                    }
-                    world_config: {
-                        right_click_harvest: %s
-                    }
+                    %s
                     -----------------------""",
-                config.format_version,
-                config.util_config.debug_mode,
-                config.util_config.suppress_warns,
-                config.world_config.right_click_harvest);
+                ConfigManager.getConfigJsonAsString());
         source.sendFeedback(() -> Text.literal(message).formatted(Formatting.GRAY), false);
         return 1;
     }
