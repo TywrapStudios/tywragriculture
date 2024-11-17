@@ -15,7 +15,7 @@ import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
 
 public class ItemGroupRegistry {
 
-    public static void registerItemGroup(Registrate REGISTRATE) {
+    public static void registerItemGroups(Registrate REGISTRATE) {
         final ItemGroup AGRICULTURE_MAIN = Registry.register(Registries.ITEM_GROUP,
                 new Identifier(Tywragriculture.MOD_ID, "agriculture"), FabricItemGroup.builder()
                         .displayName(Text.translatable("itemgroup.agriculture.main"))

@@ -16,12 +16,9 @@ repositories {
 }
 
 loom {
-	splitEnvironmentSourceSets()
-
 	mods {
 		"tywragriculture" {
 			sourceSet sourceSets.main
-			sourceSet sourceSets.client
 		}
 	}
 

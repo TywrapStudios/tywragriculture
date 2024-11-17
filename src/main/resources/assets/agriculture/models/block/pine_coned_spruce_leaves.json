@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "agriculture:block/pine_coned_spruce_leaves"
+  }
+}

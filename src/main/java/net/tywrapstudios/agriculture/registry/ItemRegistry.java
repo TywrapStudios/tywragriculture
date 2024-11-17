@@ -22,15 +22,17 @@ public class ItemRegistry {
     public static RegistryEntry<RottenTomatoItem> ROTTEN_TOMATOES;
     public static RegistryEntry<AliasedBlockItem> PURPLE_CARROT;
     public static RegistryEntry<AliasedBlockItem> BLACK_CARROT;
-    public static RegistryEntry<Item> CABBAGES;
+    public static RegistryEntry<AliasedBlockItem> CABBAGES;
     public static RegistryEntry<Item> CABBAGE_LEAVES;
     public static RegistryEntry<AliasedBlockItem> SWEET_POTATOES;
     public static RegistryEntry<Item> PINEAPPLES;
     public static RegistryEntry<Item> PINEAPPLE_SLICE;
     public static RegistryEntry<Item> PEA_SHELL;
     public static RegistryEntry<AliasedBlockItem> PEAS;
+    public static RegistryEntry<Item> PINE_CONE;
+    public static RegistryEntry<Item> ROASTED_PINE_CONE;
 
-    public static void registerModItems(Registrate REGISTRATE) {
+    public static void registerItems(Registrate REGISTRATE) {
         BRIQUETTE = REGISTRATE.item("briquette", BriquetteItem::new)
                 .defaultModel()
                 .lang("Briquette")
@@ -77,6 +79,14 @@ public class ItemRegistry {
                 .defaultModel()
                 .lang("Peas")
                 .register();
+        PINE_CONE = REGISTRATE.item("pine_cone", Item::new)
+                .defaultModel()
+                .lang("Pine Cone")
+                .register();
+        ROASTED_PINE_CONE = REGISTRATE.item("roasted_pine_cone", Item::new)
+                .defaultModel()
+                .lang("Roasted Pine Cone")
+                .register();
 
         registerFDInspiredItems(REGISTRATE);
         LoggingHandlers.debug("Items have been registered.");
@@ -96,7 +106,7 @@ public class ItemRegistry {
                 .defaultModel()
                 .lang("Rotten Tomato")
                 .register();
-        CABBAGES = REGISTRATE.item("cabbage", Item::new)
+        CABBAGES = REGISTRATE.item("cabbage", p -> new AliasedBlockItem(BlockRegistry.CABBAGE.get(), new FabricItemSettings()))
                 .defaultModel()
                 .lang("Cabbage")
                 .register();

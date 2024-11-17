@@ -19,14 +19,14 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
-import net.tywrapstudios.agriculture.resources.BlockEntityTypes;
+import net.tywrapstudios.agriculture.content.block.BlockEntities;
 
 public class CrateBlockEntity extends LootableContainerBlockEntity {
     private DefaultedList<ItemStack> inventory;
     private final ViewerCountManager stateManager;
 
     public CrateBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityTypes.CRATE, pos, state);
+        super(BlockEntities.CRATE, pos, state);
         this.inventory = DefaultedList.ofSize(27*2, ItemStack.EMPTY);
         this.stateManager = new ViewerCountManager() {
             protected void onContainerOpen(World world, BlockPos pos, BlockState state) {

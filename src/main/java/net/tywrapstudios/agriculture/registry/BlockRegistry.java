@@ -5,8 +5,10 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.tywrapstudios.agriculture.Tywragriculture;
 import net.tywrapstudios.agriculture.content.block.crops.*;
@@ -27,8 +29,11 @@ public class BlockRegistry {
     public static RegistryEntry<CrateBlock> CRATE;
     public static RegistryEntry<OvenBlock> OVEN;
     public static RegistryEntry<SinkBlock> SINK;
+    public static RegistryEntry<CabbageCrop> CABBAGE;
+    public static RegistryEntry<LeavesBlock> PINE_CONED_SPRUCE_LEAVES;
+    public static RegistryEntry<MeatGrinderBlock> MEAT_GRINDER;
 
-    public static void registerModBlocks(Registrate REGISTRATE) {
+    public static void registerBlocks(Registrate REGISTRATE) {
         BLACK_CARROT = REGISTRATE.block("black_carrot_crop", p -> new BlackCarrotCrop(FabricBlockSettings
                         .copyOf(Blocks.CARROTS)))
                 .register();
@@ -56,6 +61,17 @@ public class BlockRegistry {
                 .simpleItem()
                 .lang("Sink")
                 .register();
+        PINE_CONED_SPRUCE_LEAVES = REGISTRATE.block("pine_coned_spruce_leaves", p -> Blocks.createLeavesBlock(BlockSoundGroup.GRASS))
+                .simpleItem()
+                .lang("Pine Coned Spruce Leaves")
+                .register();
+        MEAT_GRINDER = REGISTRATE.block("meat_grinder", p -> new MeatGrinderBlock(FabricBlockSettings
+                        .copyOf(Blocks.IRON_BLOCK)
+                        //.nonOpaque() // The Model will not be a full block later, so I already set it to non-opaque.
+                ))
+                .simpleItem()
+                .lang("Meat Grinder")
+                .register();
 
 
         registerFDInspiredBlocks(REGISTRATE);
@@ -65,6 +81,9 @@ public class BlockRegistry {
     public static void registerFDInspiredBlocks(Registrate REGISTRATE) {
         TOMATO_PLANT = REGISTRATE.block("tomato_shrub", p -> new TomatoShrub(FabricBlockSettings
                 .copyOf(Blocks.SWEET_BERRY_BUSH)))
+                .register();
+        CABBAGE = REGISTRATE.block("cabbage_crop", p -> new CabbageCrop(FabricBlockSettings
+                .copyOf(Blocks.WHEAT)))
                 .register();
     }
 }

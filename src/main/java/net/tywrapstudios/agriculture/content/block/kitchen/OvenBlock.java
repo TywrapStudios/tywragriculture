@@ -15,7 +15,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.tywrapstudios.agriculture.content.block.kitchen.abstracts.AbstractOvenBlock;
-import net.tywrapstudios.agriculture.resources.BlockEntityTypes;
+import net.tywrapstudios.agriculture.content.block.BlockEntities;
 import org.jetbrains.annotations.Nullable;
 
 /*
@@ -37,7 +37,7 @@ public class OvenBlock extends AbstractOvenBlock {
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(world, type, BlockEntityTypes.OVEN);
+        return checkType(world, type, BlockEntities.OVEN);
     }
 
     protected void openScreen(World world, BlockPos pos, PlayerEntity player) {
