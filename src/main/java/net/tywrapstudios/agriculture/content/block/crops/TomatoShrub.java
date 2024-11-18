@@ -13,7 +13,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.tywrapstudios.agriculture.api.agedcropblocks.Age4CropBlock;
+import net.tywrapstudios.agriculture.api.crops.aged.Age4CropBlock;
 import net.tywrapstudios.agriculture.registry.ItemRegistry;
 
 public class TomatoShrub extends Age4CropBlock {

@@ -12,8 +12,8 @@ import net.tywrapstudios.agriculture.Tywragriculture;
 public class MeatGrinderScreen extends HandledScreen<MeatGrinderScreenHandler> {
     private static final Identifier TEXTURE = new Identifier(Tywragriculture.MOD_ID, "textures/gui/meat_grinder_gui.png");
 
-    public MeatGrinderScreen(MeatGrinderScreenHandler handler, PlayerInventory inventory, Text title) {
-        super(handler, inventory, title);
+    public MeatGrinderScreen(MeatGrinderScreenHandler handler, PlayerInventory playerInventory, Text title) {
+        super(handler, playerInventory, title);
     }
 
     @Override
@@ -26,6 +26,12 @@ public class MeatGrinderScreen extends HandledScreen<MeatGrinderScreenHandler> {
 
         context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
         renderProgressDisplayer(context, x, y);
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        this.playerInventoryTitleY = playerInventoryTitleY + 1000;
     }
 
     private void renderProgressDisplayer(DrawContext context, int x, int y) {

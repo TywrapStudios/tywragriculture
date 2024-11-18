@@ -23,8 +23,10 @@ TODO: Make our own fully Custom OvenBlock class, instead of extending FurnaceBlo
  This includes RecipeType
  Maybe make it an API thing
  ~~~
- This has been remotely done, but an issue where, on reload of the world, the screen
- refuses to open and even items that were in the block don't drop when broken starts occurring.
+ This has been remotely done, but an issue, where on reload of the world, the screen
+ refuses to open and even items that were in the block don't drop when broken, starts occurring.
+ ~~~
+ It might be smarter to do more research on this, as copy-pasting Furnace code isn't the smartest thing so it seems.
 */
 public class OvenBlock extends AbstractOvenBlock {
     public OvenBlock(AbstractBlock.Settings settings) {
@@ -37,7 +39,7 @@ public class OvenBlock extends AbstractOvenBlock {
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(world, type, BlockEntities.OVEN);
+        return checkType(world, type, BlockEntities.OVEN_ENTITY.get());
     }
 
     protected void openScreen(World world, BlockPos pos, PlayerEntity player) {

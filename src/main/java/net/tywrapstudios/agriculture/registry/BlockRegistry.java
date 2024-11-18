@@ -1,15 +1,24 @@
 package net.tywrapstudios.agriculture.registry;
 
 import com.tterrag.registrate.Registrate;
+import com.tterrag.registrate.builders.BlockEntityBuilder;
+import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.tywrapstudios.agriculture.Tywragriculture;
 import net.tywrapstudios.agriculture.content.block.crops.*;
 import net.tywrapstudios.agriculture.content.block.kitchen.*;
@@ -19,9 +28,8 @@ public class BlockRegistry {
 
     public static RegistryEntry<BlackCarrotCrop> BLACK_CARROT;
     public static RegistryEntry<PurpleCarrotCrop> PURPLE_CARROT;
-    public static final Block GOLD_CARROT = Registry.register(Registries.BLOCK, new Identifier(Tywragriculture.MOD_ID, "gold_carrot_crop"),
-            new GoldCarrotCrop(FabricBlockSettings
-                    .copyOf(Blocks.CARROTS)));
+    public static final Block GOLD_CARROT = registerBlock("gold_carrot_crop", new GoldCarrotCrop(FabricBlockSettings
+            .copyOf(Blocks.CARROTS)),false);
     public static RegistryEntry<TomatoShrub> TOMATO_PLANT;
     public static RegistryEntry<SweetPotatoCrop> SWEET_POTATO;
     public static RegistryEntry<StrawberryBush> STRAWBERRY_BUSH;
@@ -66,9 +74,7 @@ public class BlockRegistry {
                 .lang("Pine Coned Spruce Leaves")
                 .register();
         MEAT_GRINDER = REGISTRATE.block("meat_grinder", p -> new MeatGrinderBlock(FabricBlockSettings
-                        .copyOf(Blocks.IRON_BLOCK)
-                        //.nonOpaque() // The Model will not be a full block later, so I already set it to non-opaque.
-                ))
+                        .copyOf(Blocks.IRON_BLOCK)))
                 .simpleItem()
                 .lang("Meat Grinder")
                 .register();
@@ -85,5 +91,19 @@ public class BlockRegistry {
         CABBAGE = REGISTRATE.block("cabbage_crop", p -> new CabbageCrop(FabricBlockSettings
                 .copyOf(Blocks.WHEAT)))
                 .register();
+    }
+
+    private static Block registerBlock(String name, Block block, boolean item) {
+        LoggingHandlers.literalDebug(String.format("The Block %s was manually registered without utilizing Registrate.", block), true);
+        if (item) {
+            registerBlockItem(name, block);
+            LoggingHandlers.literalDebug(">> With an item associated with the Block.", true);
+        }
+        return Registry.register(Registries.BLOCK, new Identifier(Tywragriculture.MOD_ID, name), block);
+    }
+
+    private static void registerBlockItem(String name, Block block) {
+        Registry.register(Registries.ITEM, new Identifier(Tywragriculture.MOD_ID, name),
+                new BlockItem(block, new FabricItemSettings()));
     }
 }

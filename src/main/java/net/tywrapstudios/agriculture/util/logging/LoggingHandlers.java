@@ -32,6 +32,7 @@ public class LoggingHandlers {
         if (config.util_config.debug_mode) {
             debug.info(message);
         }
+        literalDebug(message);
     }
 
     public static void literalDebug(String message) {
@@ -41,10 +42,19 @@ public class LoggingHandlers {
         }
     }
 
+    public static void literalDebug(String message, boolean ignoreConfig) {
+        if (ignoreConfig) {
+            debug.debug(message);
+        } else {
+            literalDebug(message);
+        }
+    }
+
     public static void debugWarning(String message) {
         Config config = ConfigManager.config;
-        if (config.util_config.debug_mode&&!config.util_config.suppress_warns) {
+        if (config.util_config.debug_mode && !config.util_config.suppress_warns) {
             debug.warn(message);
         }
+        literalDebug("[WARN] " + message);
     }
 }

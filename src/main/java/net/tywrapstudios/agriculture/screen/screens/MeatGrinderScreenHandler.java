@@ -18,13 +18,13 @@ public class MeatGrinderScreenHandler extends ScreenHandler {
     private final PropertyDelegate propertyDelegate;
     public final MeatGrinderBlockEntity blockEntity;
 
-    public MeatGrinderScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
-        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
+    public MeatGrinderScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf buf) {
+        this(syncId, playerInventory, playerInventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
                 new ArrayPropertyDelegate(2));
     }
 
     public MeatGrinderScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
-        super(ScreenHandlers.MEAT_GRINDER, syncId);
+        super(ScreenHandlers.MEAT_GRINDER_SCREEN.get(), syncId);
 
         checkSize(((Inventory) blockEntity), 2);
         this.inventory = ((Inventory) blockEntity);
@@ -33,7 +33,7 @@ public class MeatGrinderScreenHandler extends ScreenHandler {
         this.blockEntity = ((MeatGrinderBlockEntity) blockEntity);
 
         this.addSlot(new Slot(inventory, 0, 80, 11));
-        this.addSlot(new Slot(inventory, 1, 80, 59));
+        this.addSlot(new Slot(inventory, 1, 80, 57));
 
 
         addPlayerInventory(playerInventory);

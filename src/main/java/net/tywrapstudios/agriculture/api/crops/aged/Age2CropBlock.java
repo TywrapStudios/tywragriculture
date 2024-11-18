@@ -1,4 +1,4 @@
-package net.tywrapstudios.agriculture.api.agedcropblocks;
+package net.tywrapstudios.agriculture.api.crops.aged;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -7,11 +7,11 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 
-public class Age5CropBlock extends CropBlock {
-    public static final int MAX_AGE = 5;
-    public static final IntProperty AGE = Properties.AGE_5;
+public class Age2CropBlock extends CropBlock {
+    public static final int MAX_AGE = 2;
+    public static final IntProperty AGE = Properties.AGE_2;
 
-    public Age5CropBlock(Settings settings) {
+    public Age2CropBlock(Settings settings) {
         super(settings);
     }
 

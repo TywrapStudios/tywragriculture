@@ -24,7 +24,5 @@ public class TywragricultureClient implements ClientModInitializer {
 				BlockRenderLayerMap.INSTANCE.putBlock(block.get(), RenderLayer.getCutout());
 			}
 		}
-
-		HandledScreens.register(ScreenHandlers.MEAT_GRINDER, MeatGrinderScreen::new);
 	}
 }

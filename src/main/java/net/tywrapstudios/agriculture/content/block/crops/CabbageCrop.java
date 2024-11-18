@@ -7,7 +7,7 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-import net.tywrapstudios.agriculture.api.agedcropblocks.Age3CropBlock;
+import net.tywrapstudios.agriculture.api.crops.aged.Age3CropBlock;
 import net.tywrapstudios.agriculture.registry.ItemRegistry;
 
 public class CabbageCrop extends Age3CropBlock {

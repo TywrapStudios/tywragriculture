@@ -3,18 +3,23 @@ package net.tywrapstudios.agriculture.registry;
 import com.tterrag.registrate.Registrate;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.tywrapstudios.agriculture.content.command.AgricultureCommand;
-import net.tywrapstudios.agriculture.content.block.BlockEntities;
-import net.tywrapstudios.agriculture.screen.ScreenHandlers;
 import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
+
+import static net.tywrapstudios.agriculture.content.block.BlockEntities.registerBlockEntities;
+import static net.tywrapstudios.agriculture.registry.BlockRegistry.registerBlocks;
+import static net.tywrapstudios.agriculture.registry.Fuels.registerFuels;
+import static net.tywrapstudios.agriculture.registry.ItemGroupRegistry.registerItemGroups;
+import static net.tywrapstudios.agriculture.registry.ItemRegistry.registerItems;
+import static net.tywrapstudios.agriculture.screen.ScreenHandlers.registerScreenHandlers;
 
 public class Registry {
     public static void registerAll(Registrate REGISTRATE) {
-        ItemRegistry.registerItems(REGISTRATE);
-        BlockRegistry.registerBlocks(REGISTRATE);
-        BlockEntities.register();
-        ScreenHandlers.register();
-        Fuels.register();
-        ItemGroupRegistry.registerItemGroups(REGISTRATE);
+        registerItems(REGISTRATE);
+        registerBlocks(REGISTRATE);
+        registerBlockEntities(REGISTRATE);
+        registerScreenHandlers(REGISTRATE);
+        registerFuels();
+        registerItemGroups(REGISTRATE);
         registerCommands();
 
         REGISTRATE.register();

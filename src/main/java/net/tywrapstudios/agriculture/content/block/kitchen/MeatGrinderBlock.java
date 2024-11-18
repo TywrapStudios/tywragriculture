@@ -1,9 +1,6 @@
 package net.tywrapstudios.agriculture.content.block.kitchen;
 
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -62,7 +59,7 @@ public class MeatGrinderBlock extends BlockWithEntity implements BlockEntityProv
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, BlockEntities.MEAT_GRINDER,
+        return checkType(type, BlockEntities.MEAT_GRINDER_ENTITY.get(),
                 (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 }

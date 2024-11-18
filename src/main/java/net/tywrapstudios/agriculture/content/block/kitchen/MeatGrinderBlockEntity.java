@@ -34,7 +34,7 @@ public class MeatGrinderBlockEntity extends BlockEntity implements ExtendedScree
     private int maxProgress = 72;
 
     public MeatGrinderBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntities.MEAT_GRINDER, pos, state);
+        super(BlockEntities.MEAT_GRINDER_ENTITY.get(), pos, state);
         this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
@@ -96,7 +96,7 @@ public class MeatGrinderBlockEntity extends BlockEntity implements ExtendedScree
     }
 
     public void tick(World world, BlockPos pos, BlockState state) {
-        if (world.isClient) {
+        if (world.isClient()) {
             return;
         }
 

@@ -26,7 +26,7 @@ public class CrateBlockEntity extends LootableContainerBlockEntity {
     private final ViewerCountManager stateManager;
 
     public CrateBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntities.CRATE, pos, state);
+        super(BlockEntities.CRATE_ENTITY.get(), pos, state);
         this.inventory = DefaultedList.ofSize(27*2, ItemStack.EMPTY);
         this.stateManager = new ViewerCountManager() {
             protected void onContainerOpen(World world, BlockPos pos, BlockState state) {

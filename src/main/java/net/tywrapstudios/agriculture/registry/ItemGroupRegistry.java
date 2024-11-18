@@ -14,15 +14,17 @@ import net.tywrapstudios.agriculture.Tywragriculture;
 import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
 
 public class ItemGroupRegistry {
+    public static ItemGroup AGRICULTURE_MAIN;
 
     public static void registerItemGroups(Registrate REGISTRATE) {
-        final ItemGroup AGRICULTURE_MAIN = Registry.register(Registries.ITEM_GROUP,
+        AGRICULTURE_MAIN = Registry.register(Registries.ITEM_GROUP,
                 new Identifier(Tywragriculture.MOD_ID, "agriculture"), FabricItemGroup.builder()
                         .displayName(Text.translatable("itemgroup.agriculture.main"))
                         .icon(() -> new ItemStack(ItemRegistry.SWEET_POTATOES.get()))
                         .entries((displayContext, entries) -> {
-                            for (RegistryEntry<Item> item : REGISTRATE.getAll(Registries.ITEM.getKey())) {
-                                entries.add(item.get());
+                            for (RegistryEntry<Item> itemRegistryEntry : REGISTRATE.getAll(Registries.ITEM.getKey())) {
+                                LoggingHandlers.literalDebug(String.format("Added Item %s to ItemGroup.entries", itemRegistryEntry));
+                                entries.add(itemRegistryEntry.get());
                             }
                         }).build());
         LoggingHandlers.debug("ItemGroup has been registered.");
