@@ -3,19 +3,29 @@ package net.tywrapstudios.agriculture;
 import com.tterrag.registrate.Registrate;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
-import net.tywrapstudios.agriculture.config.ConfigManager;
+import net.tywrapstudios.agriculture.api.config.ConfigManager;
+import net.tywrapstudios.agriculture.api.config.InvalidConfigFormatException;
+import net.tywrapstudios.agriculture.config.TywragricultureConfig;
 import net.tywrapstudios.agriculture.registry.Registry;
 import net.tywrapstudios.agriculture.util.Util;
-import net.tywrapstudios.agriculture.util.logging.LoggingHandler;
+import net.tywrapstudios.agriculture.api.logging.LoggingHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.util.Objects;
 
 public class Tywragriculture implements ModInitializer {
-    private static final Logger LOGGER = LoggerFactory.getLogger("Tywragriculture");
-	private static final Logger DEBUG = LoggerFactory.getLogger("Tywragriculture-DEBUG");
-	public static final LoggingHandler LOGGING = new LoggingHandler(LOGGER, DEBUG);
+	private static final File CONFIG_FILE =
+			new File(FabricLoader.getInstance().getConfigDir().toFile(), "tywragriculture.json5");
+	public static final ConfigManager<TywragricultureConfig> CONFIG =
+			new ConfigManager<>(TywragricultureConfig.class, new File(FabricLoader.getInstance().getConfigDir().toFile(),
+					"tywragriculture.json5"));
+
+	private static final Logger MAIN = LoggerFactory.getLogger("Tywragriculture|Main");
+	private static final Logger DEBUG = LoggerFactory.getLogger("Tywragriculture|DEBUG");
+	public static LoggingHandler<TywragricultureConfig> LOGGING;
+
 	public static final String MOD_ID = "agriculture";
 	public static String MOD_VERSION;
 	public static String CONFIG_FORMAT;
@@ -28,23 +38,19 @@ public class Tywragriculture implements ModInitializer {
 		boolean FD_LOADED = FabricLoader.getInstance().isModLoaded("farmersdelight");
 		MOD_VERSION = Util.getModVer("agriculture");
 		// Config
-		CONFIG_FORMAT = "AAAA";
-		ConfigManager.loadConfig();
+		CONFIG_FORMAT = "1.0";
+		CONFIG.loadConfig();
+		TywragricultureConfig config = CONFIG.getConfig();
 
-		if (!Objects.equals(ConfigManager.config.format_version, CONFIG_FORMAT)) {
-			LOGGING.error("[Config] Your Config Format Version is out of Sync; we suggest you delete your old config file and re-run Minecraft.");
+		LOGGING = new LoggingHandler<>(MAIN, DEBUG, CONFIG.getConfig());
+
+		if (!Objects.equals(config.format_version, CONFIG_FORMAT)) {
+			throw new InvalidConfigFormatException("Config version out of Sync. Expected: " + CONFIG_FORMAT + " Actual: " + config.format_version);
 		}
 		// Mod Init
 		Registry.registerAll(REGISTRATE);
 		// Init Info Logs
 		LOGGING.info("Mod has loaded.");
 		LOGGING.info(Util.generateInitPhrase());
-		LOGGING.debug("Mod version: " + MOD_VERSION);
-		LOGGING.debug("Mod ID: " + MOD_ID);
-		LOGGING.debug("Fabric Loader version: " + Util.getModVer("fabricloader"));
-		LOGGING.debug("Farmer's Delight loaded: " + FD_LOADED);
-		if (FD_LOADED) {
-			LOGGING.debug(">>version: " + Util.getModVer("farmersdelight"));
-		}
 	}
 }

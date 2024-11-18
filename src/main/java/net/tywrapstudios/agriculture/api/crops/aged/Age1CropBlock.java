@@ -7,6 +7,10 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 
+/**
+ * A {@link CropBlock} with an Age property of {@code 1}, it has {@code 2} BlockStates.
+ * @author Tiazzz
+ */
 public class Age1CropBlock extends CropBlock {
     public static final int MAX_AGE = 1;
     public static final IntProperty AGE = Properties.AGE_1;

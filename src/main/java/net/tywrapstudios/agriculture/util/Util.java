@@ -34,7 +34,7 @@ public class Util {
 
     public static String getModVer(String modId) {
         if (FabricLoader.getInstance().isModLoaded(modId)) {
-            return FabricLoader.getInstance().getModContainer(modId).get().getMetadata().getVersion().getFriendlyString();
+            return FabricLoader.getInstance().getModContainer(modId).orElseThrow().getMetadata().getVersion().getFriendlyString();
         } else {
             return String.format("\"%s\" version not found, mod isn't loaded.", modId);
         }

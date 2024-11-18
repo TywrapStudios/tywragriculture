@@ -15,7 +15,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.tywrapstudios.agriculture.config.ConfigManager;
+import net.tywrapstudios.agriculture.Tywragriculture;
+import net.tywrapstudios.agriculture.config.TywragricultureConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
@@ -34,7 +35,8 @@ public abstract class CropBlockMixin extends PlantBlock implements Fertilizable 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         BlockState oldState = world.getBlockState(pos);
-        if (ConfigManager.config.world_config.right_click_harvest && !player.getStackInHand(hand).isOf(Items.BONE_MEAL) && !player.isSneaking() && oldState.getBlock() instanceof CropBlock block) {
+        TywragricultureConfig config = Tywragriculture.CONFIG.getConfig();
+        if (config.world_config.right_click_harvest && !player.getStackInHand(hand).isOf(Items.BONE_MEAL) && !player.isSneaking() && oldState.getBlock() instanceof CropBlock block) {
             if (block.isMature(oldState)) {
                 try {
                     LootContextParameterSet.Builder builder = (new LootContextParameterSet.Builder(world.getServer().getWorld(world.getRegistryKey())).add(LootContextParameters.ORIGIN, Vec3d.ofCenter(pos)).add(LootContextParameters.TOOL, ItemStack.EMPTY));

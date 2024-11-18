@@ -8,8 +8,7 @@ import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.tywrapstudios.agriculture.Tywragriculture;
-import net.tywrapstudios.agriculture.config.Config;
-import net.tywrapstudios.agriculture.config.ConfigManager;
+import net.tywrapstudios.agriculture.config.TywragricultureConfig;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -41,14 +40,16 @@ public class AgricultureCommand {
     }
 
     private static int reload(@NotNull CommandContext<ServerCommandSource> context) {
+        TywragricultureConfig config = Tywragriculture.CONFIG.getConfig();
         ServerCommandSource source = context.getSource();
-        if (Objects.equals(ConfigManager.config.format_version, Tywragriculture.CONFIG_FORMAT)) {
+        if (Objects.equals(config.format_version, Tywragriculture.CONFIG_FORMAT)) {
             source.sendFeedback(() -> Text.literal("[Tywragriculture] Reloading!").formatted(Formatting.GRAY), true);
             try {
-                ConfigManager.reloadConfig(context);
+                source.sendFeedback(() -> Text.literal("Reloading!").formatted(Formatting.GRAY), true);
+                Tywragriculture.CONFIG.loadConfig();
             } catch (Exception ignored) {}
         } else {
-            source.sendFeedback(() -> Text.literal("[Tywragriculture] Could not reload Config: Format Version out of sync, please delete your config file and rerun Minecraft.") .formatted(Formatting.RED), false);
+            source.sendFeedback(() -> Text.literal("Could not reload Config: Format Version out of sync, please delete your config file and rerun Minecraft.") .formatted(Formatting.RED), false);
             LOGGING.error("[Config] Your Config Version is out of Sync, please delete your config file and reload Minecraft.");
         }
         return 1;
@@ -60,7 +61,7 @@ public class AgricultureCommand {
                     --------[Config]---------
                     %s
                     -----------------------""",
-                ConfigManager.getConfigJsonAsString());
+                Tywragriculture.CONFIG.getConfigJsonAsString());
         source.sendFeedback(() -> Text.literal(message).formatted(Formatting.GRAY), false);
         return 1;
     }

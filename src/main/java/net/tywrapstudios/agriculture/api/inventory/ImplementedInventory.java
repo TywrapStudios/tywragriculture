@@ -19,7 +19,7 @@ import java.util.List;
  * Use {@link Inventories#writeNbt(NbtCompound, DefaultedList)} and {@link Inventories#readNbt(NbtCompound, DefaultedList)}
  * on {@linkplain #getItems() the item list}.
  *
- * License: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+ * <p>License: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
  * @author Juuz
  */
 @FunctionalInterface

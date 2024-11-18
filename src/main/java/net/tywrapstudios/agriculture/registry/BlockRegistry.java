@@ -29,7 +29,6 @@ public class BlockRegistry {
     public static RegistryEntry<StrawberryBush> STRAWBERRY_BUSH;
     public static RegistryEntry<PeaCrop> PEA_CROP;
     public static RegistryEntry<CrateBlock> CRATE;
-    public static RegistryEntry<OvenBlock> OVEN;
     public static RegistryEntry<SinkBlock> SINK;
     public static RegistryEntry<CabbageCrop> CABBAGE;
     public static RegistryEntry<LeavesBlock> PINE_CONED_SPRUCE_LEAVES;
@@ -54,10 +53,6 @@ public class BlockRegistry {
         CRATE = REGISTRATE.block("crate", CrateBlock::new)
                 .simpleItem()
                 .lang("Crate")
-                .register();
-        OVEN = REGISTRATE.block("oven", OvenBlock::new)
-                .simpleItem()
-                .lang("Oven")
                 .register();
         SINK = REGISTRATE.block("sink", SinkBlock::new)
                 .simpleItem()
