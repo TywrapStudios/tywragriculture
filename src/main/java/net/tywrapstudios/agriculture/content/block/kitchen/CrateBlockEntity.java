@@ -117,6 +117,6 @@ public class CrateBlockEntity extends LootableContainerBlockEntity {
         double d = (double)this.pos.getX() + 0.5 + (double)vec3i.getX() / 2.0;
         double e = (double)this.pos.getY() + 0.5 + (double)vec3i.getY() / 2.0;
         double f = (double)this.pos.getZ() + 0.5 + (double)vec3i.getZ() / 2.0;
-        this.world.playSound((PlayerEntity)null, d, e, f, soundEvent, SoundCategory.BLOCKS, 0.5F, this.world.random.nextFloat() * 0.1F + 0.2F);
+        this.world.playSound(null, d, e, f, soundEvent, SoundCategory.BLOCKS, 0.5F, this.world.random.nextFloat() * 0.1F + 0.2F);
     }
 }
