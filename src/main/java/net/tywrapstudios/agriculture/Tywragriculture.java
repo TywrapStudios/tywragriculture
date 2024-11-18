@@ -6,15 +6,16 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.tywrapstudios.agriculture.config.ConfigManager;
 import net.tywrapstudios.agriculture.registry.Registry;
 import net.tywrapstudios.agriculture.util.Util;
-import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
+import net.tywrapstudios.agriculture.util.logging.LoggingHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
 
 public class Tywragriculture implements ModInitializer {
-    public static final Logger LOGGER = LoggerFactory.getLogger("Tywragriculture");
-	public static final Logger DEBUG = LoggerFactory.getLogger("Tywragriculture-DEBUG");
+    private static final Logger LOGGER = LoggerFactory.getLogger("Tywragriculture");
+	private static final Logger DEBUG = LoggerFactory.getLogger("Tywragriculture-DEBUG");
+	public static final LoggingHandler LOGGING = new LoggingHandler(LOGGER, DEBUG);
 	public static final String MOD_ID = "agriculture";
 	public static String MOD_VERSION;
 	public static String CONFIG_FORMAT;
@@ -29,20 +30,21 @@ public class Tywragriculture implements ModInitializer {
 		// Config
 		CONFIG_FORMAT = "AAAA";
 		ConfigManager.loadConfig();
+
 		if (!Objects.equals(ConfigManager.config.format_version, CONFIG_FORMAT)) {
-			LoggingHandlers.error("[Config] Your Config Format Version is out of Sync; we suggest you delete your old config file and re-run Minecraft.");
+			LOGGING.error("[Config] Your Config Format Version is out of Sync; we suggest you delete your old config file and re-run Minecraft.");
 		}
 		// Mod Init
 		Registry.registerAll(REGISTRATE);
 		// Init Info Logs
-		LoggingHandlers.info("Mod has loaded.");
-		LoggingHandlers.info(Util.generateInitPhrase());
-		LoggingHandlers.debug("Mod version: " + MOD_VERSION);
-		LoggingHandlers.debug("Mod ID: " + MOD_ID);
-		LoggingHandlers.debug("Fabric Loader version: " + Util.getModVer("fabricloader"));
-		LoggingHandlers.debug("Farmer's Delight loaded: " + FD_LOADED);
+		LOGGING.info("Mod has loaded.");
+		LOGGING.info(Util.generateInitPhrase());
+		LOGGING.debug("Mod version: " + MOD_VERSION);
+		LOGGING.debug("Mod ID: " + MOD_ID);
+		LOGGING.debug("Fabric Loader version: " + Util.getModVer("fabricloader"));
+		LOGGING.debug("Farmer's Delight loaded: " + FD_LOADED);
 		if (FD_LOADED) {
-			LoggingHandlers.debug(">>version: " + Util.getModVer("farmersdelight"));
+			LOGGING.debug(">>version: " + Util.getModVer("farmersdelight"));
 		}
 	}
 }

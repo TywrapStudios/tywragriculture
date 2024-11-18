@@ -11,7 +11,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.tywrapstudios.agriculture.Tywragriculture;
-import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
+
+import static net.tywrapstudios.agriculture.Tywragriculture.LOGGING;
 
 public class ItemGroupRegistry {
     public static ItemGroup AGRICULTURE_MAIN;
@@ -23,10 +24,10 @@ public class ItemGroupRegistry {
                         .icon(() -> new ItemStack(ItemRegistry.SWEET_POTATOES.get()))
                         .entries((displayContext, entries) -> {
                             for (RegistryEntry<Item> itemRegistryEntry : REGISTRATE.getAll(Registries.ITEM.getKey())) {
-                                LoggingHandlers.literalDebug(String.format("Added Item %s to ItemGroup.entries", itemRegistryEntry));
+                                LOGGING.literalDebug(String.format("Added Item %s to ItemGroup.entries", itemRegistryEntry));
                                 entries.add(itemRegistryEntry.get());
                             }
                         }).build());
-        LoggingHandlers.debug("ItemGroup has been registered.");
+        LOGGING.debug("ItemGroup has been registered.");
     }
 }

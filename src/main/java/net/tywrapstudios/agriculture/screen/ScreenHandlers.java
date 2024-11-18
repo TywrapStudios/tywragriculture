@@ -4,7 +4,8 @@ import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.entry.MenuEntry;
 import net.tywrapstudios.agriculture.screen.screens.MeatGrinderScreen;
 import net.tywrapstudios.agriculture.screen.screens.MeatGrinderScreenHandler;
-import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
+
+import static net.tywrapstudios.agriculture.Tywragriculture.LOGGING;
 
 public class ScreenHandlers {
     public static MenuEntry<MeatGrinderScreenHandler> MEAT_GRINDER_SCREEN;
@@ -16,6 +17,6 @@ public class ScreenHandlers {
                 .register();
 
 
-        LoggingHandlers.debug("ScreenHandlers have been registered.");
+        LOGGING.debug("ScreenHandlers have been registered.");
     }
 }

@@ -1,6 +1,7 @@
 package net.tywrapstudios.agriculture.config;
 
 import blue.endless.jankson.Comment;
+import net.tywrapstudios.agriculture.api.config.AbstractConfig;
 import net.tywrapstudios.agriculture.content.command.AgricultureCommand;
 
 /**
@@ -12,20 +13,12 @@ import net.tywrapstudios.agriculture.content.command.AgricultureCommand;
  * <br/>
  * <br/> DON'T FORGET TO TRANSFER NEW DETAILS OVER TO {@link AgricultureCommand} and {@code README}
  */
-public class Config {
+public class Config extends AbstractConfig {
     public String format_version = "AAAA";
     @Comment("Several configurations for in-world features.")
     public WorldConfig world_config = new WorldConfig();
     public static class WorldConfig {
         @Comment("Whether to allow right-clicking to harvest crops.")
         public boolean right_click_harvest = true;
-    }
-    @Comment("Several configurations for utility features.")
-    public UtilConfig util_config = new UtilConfig();
-    public static class UtilConfig {
-        @Comment("Whether to display debug information in the console.")
-        public boolean debug_mode = false;
-        @Comment("Whether to suppress all warnings from this mod. NOT RECOMMENDED.")
-        public boolean suppress_warns = false;
     }
 }

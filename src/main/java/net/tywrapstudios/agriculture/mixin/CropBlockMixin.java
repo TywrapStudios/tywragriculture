@@ -16,11 +16,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.tywrapstudios.agriculture.config.ConfigManager;
-import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.List;
+
+import static net.tywrapstudios.agriculture.Tywragriculture.LOGGING;
 
 @Mixin(CropBlock.class)
 public abstract class CropBlockMixin extends PlantBlock implements Fertilizable {
@@ -38,14 +39,14 @@ public abstract class CropBlockMixin extends PlantBlock implements Fertilizable 
                 try {
                     LootContextParameterSet.Builder builder = (new LootContextParameterSet.Builder(world.getServer().getWorld(world.getRegistryKey())).add(LootContextParameters.ORIGIN, Vec3d.ofCenter(pos)).add(LootContextParameters.TOOL, ItemStack.EMPTY));
                     List<ItemStack> oldItemStackList = oldState.getDroppedStacks(builder);
-                    LoggingHandlers.literalDebug(String.format("1 %s | %s", oldItemStackList, oldItemStackList.size()));
+                    LOGGING.literalDebug(String.format("1 %s | %s", oldItemStackList, oldItemStackList.size()));
                     ItemStack cropItemStack = block.getPickStack(world, pos, oldState);
-                    LoggingHandlers.literalDebug(String.format("2 %s", cropItemStack));
+                    LOGGING.literalDebug(String.format("2 %s", cropItemStack));
                     oldItemStackList.remove(cropItemStack);
-                    LoggingHandlers.literalDebug(String.format("3 %s | %s", oldItemStackList, oldItemStackList.size()));
+                    LOGGING.literalDebug(String.format("3 %s | %s", oldItemStackList, oldItemStackList.size()));
                     for (ItemStack itemStack : oldItemStackList) {
                         dropStack(world, pos, itemStack);
-                        LoggingHandlers.literalDebug(String.format("4 %s | %s", oldItemStackList, oldItemStackList.size()));
+                        LOGGING.literalDebug(String.format("4 %s | %s", oldItemStackList, oldItemStackList.size()));
                     }
                     world.playSound(null, pos,
                             SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES,

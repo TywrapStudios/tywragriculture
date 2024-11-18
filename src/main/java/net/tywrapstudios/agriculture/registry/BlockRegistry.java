@@ -15,7 +15,8 @@ import net.minecraft.util.Identifier;
 import net.tywrapstudios.agriculture.Tywragriculture;
 import net.tywrapstudios.agriculture.content.block.crops.*;
 import net.tywrapstudios.agriculture.content.block.kitchen.*;
-import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
+
+import static net.tywrapstudios.agriculture.Tywragriculture.LOGGING;
 
 public class BlockRegistry {
 
@@ -74,7 +75,7 @@ public class BlockRegistry {
 
 
         registerFDInspiredBlocks(REGISTRATE);
-        LoggingHandlers.debug("Blocks have been registered.");
+        LOGGING.debug("Blocks have been registered.");
     }
 
     public static void registerFDInspiredBlocks(Registrate REGISTRATE) {
@@ -87,10 +88,10 @@ public class BlockRegistry {
     }
 
     private static Block registerBlock(String name, Block block, boolean item) {
-        LoggingHandlers.literalDebug(String.format("The Block %s was manually registered without utilizing Registrate.", block), true);
+        LOGGING.literalDebug(String.format("The Block %s was manually registered without utilizing Registrate.", block), true);
         if (item) {
             registerBlockItem(name, block);
-            LoggingHandlers.literalDebug(">> With an item associated with the Block.", true);
+            LOGGING.literalDebug(">> With an item associated with the Block.", true);
         }
         return Registry.register(Registries.BLOCK, new Identifier(Tywragriculture.MOD_ID, name), block);
     }

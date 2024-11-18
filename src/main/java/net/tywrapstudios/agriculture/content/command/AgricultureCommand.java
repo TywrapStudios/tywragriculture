@@ -10,10 +10,11 @@ import net.minecraft.util.Formatting;
 import net.tywrapstudios.agriculture.Tywragriculture;
 import net.tywrapstudios.agriculture.config.Config;
 import net.tywrapstudios.agriculture.config.ConfigManager;
-import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
+
+import static net.tywrapstudios.agriculture.Tywragriculture.LOGGING;
 
 public class AgricultureCommand {
 
@@ -43,10 +44,12 @@ public class AgricultureCommand {
         ServerCommandSource source = context.getSource();
         if (Objects.equals(ConfigManager.config.format_version, Tywragriculture.CONFIG_FORMAT)) {
             source.sendFeedback(() -> Text.literal("[Tywragriculture] Reloading!").formatted(Formatting.GRAY), true);
-            ConfigManager.reloadConfig(context);
+            try {
+                ConfigManager.reloadConfig(context);
+            } catch (Exception ignored) {}
         } else {
             source.sendFeedback(() -> Text.literal("[Tywragriculture] Could not reload Config: Format Version out of sync, please delete your config file and rerun Minecraft.") .formatted(Formatting.RED), false);
-            LoggingHandlers.error("[Config] Your Config Version is out of Sync, please delete your config file and reload Minecraft.");
+            LOGGING.error("[Config] Your Config Version is out of Sync, please delete your config file and reload Minecraft.");
         }
         return 1;
     }

@@ -3,8 +3,8 @@ package net.tywrapstudios.agriculture.registry;
 import com.tterrag.registrate.Registrate;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.tywrapstudios.agriculture.content.command.AgricultureCommand;
-import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
 
+import static net.tywrapstudios.agriculture.Tywragriculture.LOGGING;
 import static net.tywrapstudios.agriculture.content.block.BlockEntities.registerBlockEntities;
 import static net.tywrapstudios.agriculture.registry.BlockRegistry.registerBlocks;
 import static net.tywrapstudios.agriculture.registry.Fuels.registerFuels;
@@ -23,11 +23,11 @@ public class Registry {
         registerCommands();
 
         REGISTRATE.register();
-        LoggingHandlers.debug("General REGISTRATE has been registered.");
+        LOGGING.debug("General REGISTRATE has been registered.");
     }
 
     private static void registerCommands() {
         CommandRegistrationCallback.EVENT.register((dispatcher, dedicated, registrationEnvironment) -> AgricultureCommand.register(dispatcher));
-        LoggingHandlers.debug("Commands have been registered.");
+        LOGGING.debug("Commands have been registered.");
     }
 }

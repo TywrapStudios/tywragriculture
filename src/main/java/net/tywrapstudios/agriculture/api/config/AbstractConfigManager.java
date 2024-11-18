@@ -1,38 +1,54 @@
-package net.tywrapstudios.agriculture.config;
+package net.tywrapstudios.agriculture.api.config;
 
 import blue.endless.jankson.Jankson;
 import blue.endless.jankson.JsonElement;
 import blue.endless.jankson.JsonObject;
-import blue.endless.jankson.api.SyntaxError;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.tywrapstudios.agriculture.util.logging.LoggingHandler;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 
-import static net.tywrapstudios.agriculture.Tywragriculture.LOGGING;
-
 /**
- * The manager makes/edits the config file, and reads (loads) from it as well.
- * <br/>This is utilizing {@link Jankson}, which is a different method of adding Config than our other mods.
+ * I attempted to make a modular ConfigManager class, that can be extended.
+ * <p>Sadly my knowledge on Java isn't that good, so I'll have to look further into this.
+ * @author Tiazzz
  */
-public class ConfigManager {
+public abstract class AbstractConfigManager {
     private static final Jankson jankson = Jankson.builder().build();
-    private static final File configFile = new File(FabricLoader.getInstance().getConfigDir().toFile(), getConfigFileName());
-    public static Config config;
+    private static File configFile = new File(FabricLoader.getInstance().getConfigDir().toFile(), getConfigFileName());
+    private static String FILE_NAME = "ts_api.json5";
+    private static LoggingHandler LOGGING;
+    public static ConfigClass config;
+
+    public AbstractConfigManager(String fileName, LoggingHandler loggingHandler) {
+        FILE_NAME = fileName;
+        LOGGING = loggingHandler;
+        configFile = new File(FabricLoader.getInstance().getConfigDir().toFile(), fileName);
+    }
+
+    public static File getConfigFile() {
+        return configFile;
+    }
 
     public static String getConfigFileName() {
-        return "tywragriculture.json5";
+        return FILE_NAME;
+    }
+
+    public static ConfigClass getConfig() {
+        return config;
     }
 
     public static String getConfigJsonAsString() {
         try {
-            JsonObject jsonObject = jankson.load(configFile);
+            JsonObject jsonObject = jankson.load(getConfigFile());
             return jsonObject.toJson(false, true).replace("\t", "  ");
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,39 +56,39 @@ public class ConfigManager {
         }
     }
 
-    public static void loadConfig() {
-        if (configFile.exists()) {
+    public static <T extends ConfigClass> void loadConfig(Class<T> configClass) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        if (getConfigFile().exists()) {
             try {
-                config = jankson.fromJson(jankson.load(configFile), Config.class);
+                config = jankson.fromJson(jankson.load(getConfigFile()), configClass);
                 LOGGING.info("[Config] Loaded configuration file.");
-            } catch (IOException | SyntaxError e) {
+            } catch (Exception e) {
                 LOGGING.error("[Config] Error loading configuration file; using default values.");
                 e.printStackTrace();
-                config = new Config();
+                config = configClass.getDeclaredConstructor().newInstance();
             }
         } else {
-            config = new Config();
+            config = configClass.getDeclaredConstructor().newInstance();
             LOGGING.info("[Config] No configuration file found, created new one.");
             LOGGING.info(String.format("[Config] `.../config/%s`.", getConfigFileName()));
             saveConfig();
         }
     }
 
-    public static void reloadConfig(CommandContext ctx) {
+    public static <T extends ConfigClass> void reloadConfig(CommandContext ctx, Class<T> configClass) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         ServerCommandSource source = (ServerCommandSource) ctx.getSource();
-        if (configFile.exists()) {
+        if (getConfigFile().exists()) {
             try {
-                config = jankson.fromJson(jankson.load(configFile), Config.class);
+                config = jankson.fromJson(jankson.load(getConfigFile()), configClass);
                 LOGGING.info("[Config] Reloaded configuration file.");
                 source.sendFeedback(() -> Text.literal("[Config] Reloaded configuration file.").formatted(Formatting.GRAY), true);
-            } catch (IOException | SyntaxError e) {
+            } catch (Exception e) {
                 LOGGING.error("[Config] Error loading configuration file; using default values.");
                 e.printStackTrace();
                 source.sendFeedback(() -> Text.literal("[Config] Error loading configuration file; using default values.").formatted(Formatting.RED), true);
-                config = new Config();
+                config = configClass.getDeclaredConstructor().newInstance();
             }
         } else {
-            config = new Config();
+            config = configClass.getDeclaredConstructor().newInstance();
             LOGGING.info("[Config] No configuration file found, created new one.");
             LOGGING.info(String.format("[Config] `.../config/%s`.", getConfigFileName()));
             LOGGING.warn("[Config] Note that this generally shouldn't be happening, a file should be made and available before your run!");
@@ -85,7 +101,7 @@ public class ConfigManager {
     }
 
     public static void saveConfig() {
-        try (FileOutputStream stream = new FileOutputStream(configFile)) {
+        try (FileOutputStream stream = new FileOutputStream(getConfigFile())) {
             JsonElement json = jankson.toJson(config);
             stream.write(json.toJson(true, true).getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {

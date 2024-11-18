@@ -8,8 +8,8 @@ import net.minecraft.item.Item;
 import net.tywrapstudios.agriculture.content.item.kitchen.BriquetteItem;
 import net.tywrapstudios.agriculture.content.item.foodstuffs.RottenTomatoItem;
 import net.tywrapstudios.agriculture.resources.FoodComponents;
-import net.tywrapstudios.agriculture.util.logging.LoggingHandlers;
 
+import static net.tywrapstudios.agriculture.Tywragriculture.LOGGING;
 import static net.tywrapstudios.agriculture.resources.FoodComponents.*;
 
 public class ItemRegistry {
@@ -89,7 +89,7 @@ public class ItemRegistry {
                 .register();
 
         registerFDInspiredItems(REGISTRATE);
-        LoggingHandlers.debug("Items have been registered.");
+        LOGGING.debug("Items have been registered.");
     }
 
     public static void registerFDInspiredItems(Registrate REGISTRATE) {
