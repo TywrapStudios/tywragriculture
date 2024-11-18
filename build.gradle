@@ -13,6 +13,7 @@ base {
 repositories {
 	mavenCentral()
 	maven { url = "https://mvn.devos.one/snapshots/" }
+	maven { url = 'https://jitpack.io' }
 }
 
 loom {
@@ -40,6 +41,9 @@ dependencies {
 	modImplementation(include("com.tterrag.registrate_fabric:Registrate:${project.registrate_version}"))
 	// Jankson
 	implementation(include("blue.endless:jankson:${project.jankson_version}"))
+	// BlossomBridge
+	modImplementation files("libs/blossombridge-${project.blossombridge_version}.jar")
+	//modImplementation("com.github.Tywrap-Studios:BlossomBridge:${project.blossombridge_version}")
 }
 
 processResources {
