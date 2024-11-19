@@ -83,10 +83,8 @@ public class BlockRegistry {
     }
 
     private static Block registerBlock(String name, Block block, boolean item) {
-        LOGGING.literalDebug(String.format("The Block %s was manually registered without utilizing Registrate.", block), true);
         if (item) {
             registerBlockItem(name, block);
-            LOGGING.literalDebug(">> With an item associated with the Block.", true);
         }
         return Registry.register(Registries.BLOCK, new Identifier(Tywragriculture.MOD_ID, name), block);
     }

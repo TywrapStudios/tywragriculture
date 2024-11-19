@@ -6,6 +6,7 @@ import net.tywrapstudios.agriculture.content.command.AgricultureCommand;
 
 import static net.tywrapstudios.agriculture.Tywragriculture.LOGGING;
 import static net.tywrapstudios.agriculture.content.block.BlockEntities.registerBlockEntities;
+import static net.tywrapstudios.agriculture.recipe.Recipes.registerRecipes;
 import static net.tywrapstudios.agriculture.registry.BlockRegistry.registerBlocks;
 import static net.tywrapstudios.agriculture.registry.Fuels.registerFuels;
 import static net.tywrapstudios.agriculture.registry.ItemGroupRegistry.registerItemGroups;
@@ -18,6 +19,7 @@ public class Registry {
         registerBlocks(REGISTRATE);
         registerBlockEntities(REGISTRATE);
         registerScreenHandlers(REGISTRATE);
+        registerRecipes();
         registerFuels();
         registerItemGroups(REGISTRATE);
         registerCommands();

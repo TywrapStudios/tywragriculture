@@ -1,0 +1,12 @@
+{
+  "type": "agriculture:meat_grinding",
+  "ingredients": [
+    {
+      "item": "minecraft:bone"
+    }
+  ],
+  "output": {
+    "item": "minecraft:bone_meal",
+    "count": 3
+  }
+}

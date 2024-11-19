@@ -6,11 +6,13 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.recipe.RecipeType;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -20,8 +22,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.tywrapstudios.agriculture.api.inventory.ImplementedInventory;
 import net.tywrapstudios.agriculture.content.block.BlockEntities;
+import net.tywrapstudios.agriculture.recipe.recipes.MeatGrindingRecipe;
 import net.tywrapstudios.agriculture.screen.screens.MeatGrinderScreenHandler;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class MeatGrinderBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
@@ -123,10 +128,12 @@ public class MeatGrinderBlockEntity extends BlockEntity implements ExtendedScree
     }
 
     private void craft() {
-        this.removeStack(INPUT_SLOT, 1);
-        ItemStack result = new ItemStack(Items.BONE_MEAL);
+        Optional<MeatGrindingRecipe> recipe = getCurrentRecipe();
 
-        this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
+        this.removeStack(INPUT_SLOT, 1);
+
+        this.setStack(OUTPUT_SLOT, new ItemStack(recipe.get().getOutput(null).getItem(),
+                getStack(OUTPUT_SLOT).getCount() +recipe.get().getOutput(null).getCount()));
     }
 
     private boolean hasProgressFinished() {
@@ -142,10 +149,19 @@ public class MeatGrinderBlockEntity extends BlockEntity implements ExtendedScree
     }
 
     private boolean hasRecipe() {
-        ItemStack result = new ItemStack(Items.BONE_MEAL);
-        boolean hasInput = getStack(INPUT_SLOT).getItem() == Items.BONE;
+        Optional<MeatGrindingRecipe> recipe = getCurrentRecipe();
 
-        return hasInput && canInsertAmountIntoOutputSlot(result) && canInsertItemIntoOutputSlot(result.getItem());
+        return recipe.isPresent() && canInsertAmountIntoOutputSlot(recipe.get().getOutput(null))
+                && canInsertItemIntoOutputSlot(recipe.get().getOutput(null).getItem());
+    }
+
+    private Optional<MeatGrindingRecipe> getCurrentRecipe() {
+        SimpleInventory inv = new SimpleInventory(this.size());
+        for(int i = 0; i < this.size(); i++) {
+            inv.setStack(i, this.getStack(i));
+        }
+
+        return getWorld().getRecipeManager().getFirstMatch(MeatGrindingRecipe.Type.INSTANCE, inv, getWorld());
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
