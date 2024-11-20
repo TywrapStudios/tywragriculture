@@ -26,7 +26,8 @@ public class Util {
                 "HyperNova: your soulmate is out there somewhere, but god is probably preventing the meetup.",
                 "PGM: On dit que pétrire c’est modeler , moi je dit que péter c’est démolir",
                 "PGM: Jus Monika",
-                "PGM: ···· · ···· ·  −−··−−  −−· −−− − −·−· ···· ·−"
+                "PGM: ···· · ···· ·  −−··−−  −−· −−− − −·−· ···· ·−",
+                "Feuille: Leave your E kittens and go outside get a real size cartboard"
         );
 
         return INIT_PHRASES.get(new Random().nextInt(INIT_PHRASES.size()));

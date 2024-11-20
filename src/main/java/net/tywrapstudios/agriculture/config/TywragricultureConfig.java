@@ -2,7 +2,7 @@ package net.tywrapstudios.agriculture.config;
 
 
 import blue.endless.jankson.Comment;
-import net.tywrapstudios.agriculture.api.config.AbstractConfig;
+import net.tywrapstudios.blossombridge.api.config.AbstractConfig;
 
 public class TywragricultureConfig extends AbstractConfig {
     @Comment("DO NOT TOUCH THIS. IT IS IMPORTANT INTERNAL STUFF.")

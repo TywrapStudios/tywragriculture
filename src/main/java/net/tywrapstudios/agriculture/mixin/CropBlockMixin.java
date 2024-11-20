@@ -35,7 +35,7 @@ public abstract class CropBlockMixin extends PlantBlock implements Fertilizable 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         BlockState oldState = world.getBlockState(pos);
-        TywragricultureConfig config = Tywragriculture.CONFIG.getConfig();
+        TywragricultureConfig config = Tywragriculture.CONFIG_MANAGER.getConfig();
         if (config.world_config.right_click_harvest && !player.getStackInHand(hand).isOf(Items.BONE_MEAL) && !player.isSneaking() && oldState.getBlock() instanceof CropBlock block) {
             if (block.isMature(oldState)) {
                 try {

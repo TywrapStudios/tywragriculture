@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "agriculture:pine_coned_spruce_leaves"
+          "name": "agriculture:meat_grinder"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "agriculture:blocks/pine_coned_spruce_leaves"
+  "random_sequence": "agriculture:blocks/meat_grinder"
 }

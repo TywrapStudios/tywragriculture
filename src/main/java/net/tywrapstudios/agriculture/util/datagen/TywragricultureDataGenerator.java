@@ -6,6 +6,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.tywrapstudios.agriculture.Tywragriculture;
 import net.tywrapstudios.agriculture.util.datagen.*;
 
+import java.nio.file.Path;
+
 public class TywragricultureDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
@@ -17,7 +19,7 @@ public class TywragricultureDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
 
-		ExistingFileHelper helper = ExistingFileHelper.withResources(fabricDataGenerator.getModContainer().getRootPaths().get(1));
+		ExistingFileHelper helper = ExistingFileHelper.withResourcesFromArg();
 		Tywragriculture.REGISTRATE.setupDatagen(pack, helper);
 	}
 }

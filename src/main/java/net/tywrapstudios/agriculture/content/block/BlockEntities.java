@@ -16,7 +16,7 @@ public class BlockEntities {
         CRATE_ENTITY = REGISTRATE.blockEntity("crate_entity",
                 (BlockEntityBuilder.BlockEntityFactory<CrateBlockEntity>)
                         (type, pos, state) -> new CrateBlockEntity(pos, state))
-                .validBlocks(CRATE)
+                .validBlocks(() -> CRATE)
                 .register();
         MEAT_GRINDER_ENTITY = REGISTRATE.blockEntity("meat_grinder_entity",
                         (BlockEntityBuilder.BlockEntityFactory<MeatGrinderBlockEntity>)

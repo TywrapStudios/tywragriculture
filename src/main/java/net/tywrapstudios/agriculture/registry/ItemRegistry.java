@@ -42,22 +42,22 @@ public class ItemRegistry {
                 .defaultModel()
                 .lang("Cake Slice")
                 .register();
-        STRAWBERRIES = REGISTRATE.item("strawberry", p -> new AliasedBlockItem(BlockRegistry.STRAWBERRY_BUSH.get(), new FabricItemSettings()
+        STRAWBERRIES = REGISTRATE.item("strawberry", p -> new AliasedBlockItem(BlockRegistry.STRAWBERRY_BUSH, new FabricItemSettings()
                         .food(STRAWBERRY.get())))
                 .defaultModel()
                 .lang("Strawberry")
                 .register();
-        PURPLE_CARROT = REGISTRATE.item("purple_carrot", p -> new AliasedBlockItem(BlockRegistry.PURPLE_CARROT.get(), new FabricItemSettings()
+        PURPLE_CARROT = REGISTRATE.item("purple_carrot", p -> new AliasedBlockItem(BlockRegistry.PURPLE_CARROT, new FabricItemSettings()
                         .food(CARROT_PURPLE.get())))
                 .defaultModel()
                 .lang("Purple Carrot")
                 .register();
-        BLACK_CARROT = REGISTRATE.item("black_carrot", p -> new AliasedBlockItem(BlockRegistry.BLACK_CARROT.get(), new FabricItemSettings()
+        BLACK_CARROT = REGISTRATE.item("black_carrot", p -> new AliasedBlockItem(BlockRegistry.BLACK_CARROT, new FabricItemSettings()
                         .food(CARROT_BLACK.get())))
                 .defaultModel()
                 .lang("Black Carrot")
                 .register();
-        SWEET_POTATOES = REGISTRATE.item("sweet_potato", p -> new AliasedBlockItem(BlockRegistry.SWEET_POTATO.get(), new FabricItemSettings()
+        SWEET_POTATOES = REGISTRATE.item("sweet_potato", p -> new AliasedBlockItem(BlockRegistry.SWEET_POTATO, new FabricItemSettings()
                         .food(SWEET_POTATO.get())))
                 .defaultModel()
                 .lang("Sweet Potato")
@@ -75,7 +75,7 @@ public class ItemRegistry {
                 .defaultModel()
                 .lang("Pea Shell")
                 .register();
-        PEAS = REGISTRATE.item("peas", p -> new AliasedBlockItem(BlockRegistry.PEA_CROP.get(), new FabricItemSettings()))
+        PEAS = REGISTRATE.item("peas", p -> new AliasedBlockItem(BlockRegistry.PEA_CROP, new FabricItemSettings()))
                 .defaultModel()
                 .lang("Peas")
                 .register();
@@ -98,7 +98,7 @@ public class ItemRegistry {
                 .defaultModel()
                 .lang("Tomato")
                 .register();
-        TOMATO_SEEDS = REGISTRATE.item("tomato_seeds", p -> new AliasedBlockItem(BlockRegistry.TOMATO_PLANT.get(), new FabricItemSettings()))
+        TOMATO_SEEDS = REGISTRATE.item("tomato_seeds", p -> new AliasedBlockItem(BlockRegistry.TOMATO_PLANT, new FabricItemSettings()))
                 .defaultModel()
                 .lang("Tomato Seeds")
                 .register();
@@ -106,7 +106,7 @@ public class ItemRegistry {
                 .defaultModel()
                 .lang("Rotten Tomato")
                 .register();
-        CABBAGES = REGISTRATE.item("cabbage", p -> new AliasedBlockItem(BlockRegistry.CABBAGE.get(), new FabricItemSettings()))
+        CABBAGES = REGISTRATE.item("cabbage", p -> new AliasedBlockItem(BlockRegistry.CABBAGE, new FabricItemSettings()))
                 .defaultModel()
                 .lang("Cabbage")
                 .register();

@@ -40,13 +40,13 @@ public class AgricultureCommand {
     }
 
     private static int reload(@NotNull CommandContext<ServerCommandSource> context) {
-        TywragricultureConfig config = Tywragriculture.CONFIG.getConfig();
+        TywragricultureConfig config = Tywragriculture.CONFIG_MANAGER.getConfig();
         ServerCommandSource source = context.getSource();
         if (Objects.equals(config.format_version, Tywragriculture.CONFIG_FORMAT)) {
             source.sendFeedback(() -> Text.literal("[Tywragriculture] Reloading!").formatted(Formatting.GRAY), true);
             try {
                 source.sendFeedback(() -> Text.literal("Reloading!").formatted(Formatting.GRAY), true);
-                Tywragriculture.CONFIG.loadConfig();
+                Tywragriculture.CONFIG_MANAGER.loadConfig();
             } catch (Exception ignored) {}
         } else {
             source.sendFeedback(() -> Text.literal("Could not reload Config: Format Version out of sync, please delete your config file and rerun Minecraft.") .formatted(Formatting.RED), false);
@@ -61,7 +61,7 @@ public class AgricultureCommand {
                     --------[Config]---------
                     %s
                     -----------------------""",
-                Tywragriculture.CONFIG.getConfigJsonAsString());
+                Tywragriculture.CONFIG_MANAGER.getConfigJsonAsString());
         source.sendFeedback(() -> Text.literal(message).formatted(Formatting.GRAY), false);
         return 1;
     }
