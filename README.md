@@ -18,17 +18,17 @@ A mod aimed to build onto Minecraft's farming and food gathering vibe, adding ne
   /* Psst, this is a README Comment!*/
   /* All the values in here are the default values.*/
   "format_version": "AAAA", /*This is some internal stuff, don't touch nor worry about it.*/
+  // Several configurations for in-world features.
+  "world_config": {
+    // Whether to allow right-clicking to harvest crops.
+    "right_click_harvest": true
+  },
   // Several configurations for utility features.
   "util_config": {
     // Whether to display debug information in the console.
     "debug_mode": false,
     // Whether to suppress all warnings from this mod. NOT RECOMMENDED.
     "suppress_warns": false
-  },
-  // Several configurations for in-world features.
-  "world_config": {
-    // Whether to allow right-clicking to harvest crops.
-    "right_click_harvest": true
   }
 }
 ```
