@@ -8,6 +8,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.loot.condition.LootCondition;
+import net.minecraft.loot.condition.LootConditionType;
+import net.minecraft.loot.condition.LootConditionTypes;
+import net.minecraft.loot.context.LootContext;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -37,12 +42,39 @@ public class BlockRegistry {
     public static RegistryEntry<MeatGrinderBlock> MEAT_GRINDER;
 
     public static void registerBlocks(Registrate REGISTRATE) {
+        /*  TODO: Properly check these .loot() calls
+             I honestly don't know if this is the correct way to do this for crops, also because
+             the parameter names in the base class methods of the lambda parameter lootTables
+             is very weird and obfuscated, as it was generated content.
+         */
         BLACK_CARROT = REGISTRATE.block("black_carrot_crop", p -> new BlackCarrotCrop(FabricBlockSettings
                     .copyOf(Blocks.CARROTS)))
+                .loot((lootTables, crop) -> lootTables.cropDrops(crop, ItemRegistry.BLACK_CARROT.get(), ItemRegistry.BLACK_CARROT.get(), () -> new LootCondition() {
+                    @Override
+                    public boolean test(LootContext lootContext) {
+                        return false;
+                    }
+
+                    @Override
+                    public LootConditionType getType() {
+                        return LootConditionTypes.ANY_OF;
+                    }
+                }).build())
                 .blockstate((context, provider) -> provider.models().crop("black_carrot_crop", new Identifier(Tywragriculture.MOD_ID, "black_carrot_crop")))
                 .register();
         PURPLE_CARROT = REGISTRATE.block("purple_carrot_crop", p -> new PurpleCarrotCrop(FabricBlockSettings
                     .copyOf(Blocks.CARROTS)))
+                .loot((lootTables, crop) -> lootTables.cropDrops(crop, ItemRegistry.PURPLE_CARROT.get(), ItemRegistry.PURPLE_CARROT.get(), () -> new LootCondition() {
+                    @Override
+                    public boolean test(LootContext lootContext) {
+                        return false;
+                    }
+
+                    @Override
+                    public LootConditionType getType() {
+                        return LootConditionTypes.ANY_OF;
+                    }
+                }).build())
                 .blockstate((context, provider) -> provider.models().crop("purple_carrot_crop", new Identifier(Tywragriculture.MOD_ID, "purple_carrot_crop")))
                 .register();
         SWEET_POTATO = REGISTRATE.block("sweet_potato_crop", p -> new SweetPotatoCrop(FabricBlockSettings
@@ -77,6 +109,7 @@ public class BlockRegistry {
                 .register();
         PINE_CONED_SPRUCE_LEAVES = REGISTRATE.block("pine_coned_spruce_leaves", p -> Blocks.createLeavesBlock(BlockSoundGroup.GRASS))
                 .simpleItem()
+                .blockstate((context, provider) -> provider.models().singleTexture("pine_coned_spruce_leaves", new Identifier("block/leaves"), "all", new Identifier(Tywragriculture.MOD_ID, "pine_coned_spruce_leaves")))
                 .tag(net.minecraft.registry.tag.BlockTags.LEAVES)
                 .register();
         MEAT_GRINDER = REGISTRATE.block("meat_grinder", p -> new MeatGrinderBlock(FabricBlockSettings
