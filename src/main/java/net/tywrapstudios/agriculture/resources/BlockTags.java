@@ -7,7 +7,8 @@ import net.minecraft.util.Identifier;
 import net.tywrapstudios.agriculture.Tywragriculture;
 
 public enum BlockTags {
-    KITCHEN(of("kitchen"));
+    KITCHEN(of("kitchen")),
+    FD_INSPIRED(of("fd_inspired"));
 
     private final TagKey<Block> blockTagKey;
 

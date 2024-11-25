@@ -18,7 +18,7 @@ public abstract class ItemsMixin {
 		)
 	)
 	private static Item agriculture$makeGoldenCarrotAliased(Item.Settings settings) {
-		return new AliasedBlockItem(BlockRegistry.GOLD_CARROT, (new Item.Settings()).food(FoodComponents.GOLDEN_CARROT));
+		return new AliasedBlockItem(BlockRegistry.GOLD_CARROT, new Item.Settings().food(FoodComponents.GOLDEN_CARROT));
 	}
 }
 	

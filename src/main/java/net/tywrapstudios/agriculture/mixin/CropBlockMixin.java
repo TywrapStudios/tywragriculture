@@ -56,7 +56,11 @@ public abstract class CropBlockMixin extends PlantBlock implements Fertilizable 
                     world.setBlockState(pos, state.with(getAgeProperty(), 0));
                     player.swingHand(hand);
                     return ActionResult.SUCCESS;
-                } catch (NullPointerException ignored) {}
+                } catch (NullPointerException e) {
+                    LOGGING.debugWarning("When right clicking crops, NullPointerException was thrown. View the error stacktrace below for more information.");
+                    e.printStackTrace();
+                    return ActionResult.PASS;
+                }
             }
         }
         return ActionResult.PASS;

@@ -10,8 +10,9 @@ public enum ItemTags {
     KNIVES(of("knives")),
     CONSUMABLES(of("consumables")),
     DRINKS(of("drinks")),
-    FOODS(of("foods"));
-
+    FOODS(of("foods")),
+    CUTTABLES(of("cuttables")),
+    FD_INSPIRED(of("fd_inspired"));
 
     private final TagKey<Item> itemTagKey;
 
