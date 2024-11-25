@@ -1,7 +1,9 @@
 {
   "replace": false,
   "values": [
+    "agriculture:crate",
     "agriculture:sink",
-    "agriculture:meat_grinder"
+    "agriculture:meat_grinder",
+    "agriculture:oven"
   ]
 }
