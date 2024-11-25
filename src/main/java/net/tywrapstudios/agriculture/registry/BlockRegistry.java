@@ -42,7 +42,7 @@ public class BlockRegistry {
     public static RegistryEntry<MeatGrinderBlock> MEAT_GRINDER;
 
     public static void registerBlocks(Registrate REGISTRATE) {
-        /*  TODO: Properly check these .loot() calls
+        /*  TODO: Properly check these .loot(...) calls
              I honestly don't know if this is the correct way to do this for crops, also because
              the parameter names in the base class methods of the lambda parameter lootTables
              is very weird and obfuscated, as it was generated content.
@@ -57,7 +57,7 @@ public class BlockRegistry {
 
                     @Override
                     public LootConditionType getType() {
-                        return LootConditionTypes.ANY_OF;
+                        return LootConditionTypes.BLOCK_STATE_PROPERTY;
                     }
                 }).build())
                 .blockstate((context, provider) -> provider.models().crop("black_carrot_crop", new Identifier(Tywragriculture.MOD_ID, "black_carrot_crop")))
@@ -72,7 +72,7 @@ public class BlockRegistry {
 
                     @Override
                     public LootConditionType getType() {
-                        return LootConditionTypes.ANY_OF;
+                        return LootConditionTypes.BLOCK_STATE_PROPERTY;
                     }
                 }).build())
                 .blockstate((context, provider) -> provider.models().crop("purple_carrot_crop", new Identifier(Tywragriculture.MOD_ID, "purple_carrot_crop")))
@@ -120,7 +120,8 @@ public class BlockRegistry {
         OVEN = REGISTRATE.block("oven", p -> new OvenBlock(FabricBlockSettings
                     .copyOf(Blocks.FURNACE)))
                 .item((ovenBlock, settings) -> new BlockItem(ovenBlock, new FabricItemSettings()))
-                .model((context, provider) -> provider.generatedModels.get(new Identifier(Tywragriculture.MOD_ID, "block/oven/oven")))
+                .model((context, provider) -> provider.blockItem(() -> context.get().getBlock(), "/oven"))
+//              .model((context, provider) -> provider.generatedModels.get(new Identifier(Tywragriculture.MOD_ID, "block/oven/oven")))
                 .build()
                 .blockstate((context, provider) -> provider.horizontalBlock(context.get(), state ->
                         provider.models().getExistingFile(
