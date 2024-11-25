@@ -17,6 +17,8 @@ repositories {
 }
 
 loom {
+	accessWidenerPath = file("src/main/resources/agriculture.accesswidener")
+
 	mods {
 		"tywragriculture" {
 			sourceSet sourceSets.main

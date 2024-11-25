@@ -15,6 +15,7 @@
 	"license": "MIT",
 	"icon": "assets/agriculture/icons/agriculture_mod_icon.png",
 	"environment": "*",
+	"accessWidener": "agriculture.accesswidener",
 	"entrypoints": {
 		"main": [
           "net.tywrapstudios.agriculture.Tywragriculture"
@@ -27,19 +28,15 @@
 		]
 	},
 	"mixins": [
-		"tywragriculture.mixins.json",
-		{
-			"config": "tywragriculture.client.mixins.json",
-			"environment": "client"
-		}
+		"tywragriculture.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
+		"blossombridge": ">=1.0.3",
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"farmersdelight": ">=1.20.1-2.0.0+refabricated"
 	}
 }
