@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
+import net.tywrapstudios.agriculture.Tywragriculture;
 
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class MeatGrindingRecipe implements Recipe<SimpleInventory> {
 
     @Override
     public Identifier getId() {
-        return null;
+        return new Identifier(Tywragriculture.MOD_ID, "meat_grinding");
     }
 
     @Override
