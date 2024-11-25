@@ -20,8 +20,6 @@ public class Tywragriculture implements ModInitializer {
 			new ConfigManager<>(TywragricultureConfig.class, new File(FabricLoader.getInstance().getConfigDir().toFile(),
 					"tywragriculture.json5"));
 
-	private static final Logger MAIN = LoggerFactory.getLogger("Tywragriculture|Main");
-	private static final Logger DEBUG = LoggerFactory.getLogger("Tywragriculture|DEBUG");
 	public static LoggingHandler<TywragricultureConfig> LOGGING;
 
 	public static final String MOD_ID = "agriculture";
@@ -40,7 +38,7 @@ public class Tywragriculture implements ModInitializer {
 		CONFIG_MANAGER.loadConfig();
 		TywragricultureConfig config = CONFIG_MANAGER.getConfig();
 
-		LOGGING = new LoggingHandler<>(MAIN, DEBUG, CONFIG_MANAGER.getConfig());
+		LOGGING = new LoggingHandler<>("Tywragriculture", CONFIG_MANAGER.getConfig());
 
 		if (!Objects.equals(config.format_version, CONFIG_FORMAT)) {
 			throw new InvalidConfigFormatException("Config version out of Sync. Expected: " + CONFIG_FORMAT + " Actual: " + config.format_version);

@@ -1,0 +1,10 @@
+{
+  "type": "agriculture:oven_cooking",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.2,
+  "ingredient": {
+    "tag": "minecraft:logs_that_burn"
+  },
+  "result": "agriculture:briquette"
+}

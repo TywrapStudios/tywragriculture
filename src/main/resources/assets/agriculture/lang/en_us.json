@@ -1,6 +1,32 @@
 {
   "itemgroup.agriculture.main": "Tywragriculture",
 
+  "block.agriculture.": "",
+  "block.agriculture.crate": "Crate",
+  "block.agriculture.meat_grinder": "Meat Grinder",
+  "block.agriculture.oven": "Oven",
+  "block.agriculture.pine_coned_spruce_leaves": "Pine Coned Spruce Leaves",
+  "block.agriculture.sink": "Sink",
+
+  "item.agriculture.": "",
+  "item.agriculture.black_carrot": "Black Carrot",
+  "item.agriculture.briquette": "Briquette",
+  "item.agriculture.cabbage": "Cabbage",
+  "item.agriculture.cabbage_leaf": "Cabbage Leaf",
+  "item.agriculture.cake_slice": "Cake Slice",
+  "item.agriculture.pea_shell": "Pea Shell",
+  "item.agriculture.peas": "Peas",
+  "item.agriculture.pine_cone": "Pine Cone",
+  "item.agriculture.pineapple": "Whole Pineapple",
+  "item.agriculture.pineapple_slice": "Pineapple Slice",
+  "item.agriculture.purple_carrot": "Purple Carrot",
+  "item.agriculture.roasted_pine_cone": "Roasted Pine Cone",
+  "item.agriculture.rotten_tomato": "Rotten Tomato",
+  "item.agriculture.strawberry": "Strawberry",
+  "item.agriculture.sweet_potato": "Sweet Potato",
+  "item.agriculture.tomato": "Tomato",
+  "item.agriculture.tomato_seeds": "Tomato Seeds",
+
   "container.agriculture.": "",
   "container.agriculture.oven": "Oven",
   "container.agriculture.crate": "Crate",
@@ -27,10 +53,6 @@
   "tip.agriculture.ctd": "Check out our other mod: Chat to Discord!",
   "tip.agriculture.briquette": "As delicious as it looks, don't eat the Briquette, ok?",
   "tip.agriculture.tips": "Did you even know you add your own tips with Resource Packs?",
-
-  "advancement.agriculture.title.": "",
-
-  "advancement.agriculture.description.": "",
 
   "": ""
 }

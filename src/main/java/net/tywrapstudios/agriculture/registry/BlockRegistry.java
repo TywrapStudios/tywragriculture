@@ -21,49 +21,82 @@ import static net.tywrapstudios.agriculture.Tywragriculture.LOGGING;
 
 public class BlockRegistry {
 
-    public static Block BLACK_CARROT;
-    public static Block PURPLE_CARROT;
-    public static Block GOLD_CARROT;
-    public static Block TOMATO_PLANT;
-    public static Block SWEET_POTATO;
-    public static Block STRAWBERRY_BUSH;
-    public static Block PEA_CROP;
-    public static Block CRATE;
+    public static RegistryEntry<BlackCarrotCrop> BLACK_CARROT;
+    public static RegistryEntry<PurpleCarrotCrop> PURPLE_CARROT;
+    public static Block GOLD_CARROT = registerBlock("gold_carrot_crop", new GoldCarrotCrop(FabricBlockSettings
+            .copyOf(Blocks.CARROTS))); // Needs to be registered alternatively in favor of ItemsMixin$agriculture$makeGoldenCarrotAliased(...)
+    public static RegistryEntry<TomatoShrub> TOMATO_PLANT;
+    public static RegistryEntry<SweetPotatoCrop> SWEET_POTATO;
+    public static RegistryEntry<StrawberryBush> STRAWBERRY_BUSH;
+    public static RegistryEntry<PeaCrop> PEA_CROP;
+    public static RegistryEntry<CrateBlock> CRATE;
+    public static RegistryEntry<OvenBlock> OVEN;
     public static RegistryEntry<SinkBlock> SINK;
-    public static Block CABBAGE;
+    public static RegistryEntry<CabbageCrop> CABBAGE;
     public static RegistryEntry<LeavesBlock> PINE_CONED_SPRUCE_LEAVES;
     public static RegistryEntry<MeatGrinderBlock> MEAT_GRINDER;
 
     public static void registerBlocks(Registrate REGISTRATE) {
-        BLACK_CARROT = registerBlock("black_carrot_crop", new BlackCarrotCrop(FabricBlockSettings
-                .copyOf(Blocks.CARROTS)),false);
-        PURPLE_CARROT = registerBlock("purple_carrot_crop", new PurpleCarrotCrop(FabricBlockSettings
-                .copyOf(Blocks.CARROTS)),false);
-        GOLD_CARROT = registerBlock("gold_carrot_crop", new GoldCarrotCrop(FabricBlockSettings
-                .copyOf(Blocks.CARROTS)),false);
-        SWEET_POTATO = registerBlock("sweet_potato_crop", new SweetPotatoCrop(FabricBlockSettings
-                .copyOf(Blocks.POTATOES)), false);
-        STRAWBERRY_BUSH = registerBlock("strawberry_bush", new StrawberryBush(FabricBlockSettings
-                .copyOf(Blocks.SWEET_BERRY_BUSH)), false);
-        PEA_CROP = registerBlock("pea_crop", new PeaCrop(FabricBlockSettings
-                .copyOf(Blocks.WHEAT)), false);
-        CRATE = registerBlock("crate", new CrateBlock(FabricBlockSettings.create()), true);
+        BLACK_CARROT = REGISTRATE.block("black_carrot_crop", p -> new BlackCarrotCrop(FabricBlockSettings
+                    .copyOf(Blocks.CARROTS)))
+                .blockstate((context, provider) -> provider.models().crop("black_carrot_crop", new Identifier(Tywragriculture.MOD_ID, "black_carrot_crop")))
+                .register();
+        PURPLE_CARROT = REGISTRATE.block("purple_carrot_crop", p -> new PurpleCarrotCrop(FabricBlockSettings
+                    .copyOf(Blocks.CARROTS)))
+                .blockstate((context, provider) -> provider.models().crop("purple_carrot_crop", new Identifier(Tywragriculture.MOD_ID, "purple_carrot_crop")))
+                .register();
+        SWEET_POTATO = REGISTRATE.block("sweet_potato_crop", p -> new SweetPotatoCrop(FabricBlockSettings
+                    .copyOf(Blocks.POTATOES)))
+                .blockstate((context, provider) -> provider.simpleBlock(context.get()))
+                .register();
+        STRAWBERRY_BUSH = REGISTRATE.block("strawberry_bush", p -> new StrawberryBush(FabricBlockSettings
+                    .copyOf(Blocks.SWEET_BERRY_BUSH)))
+                .blockstate((context, provider) -> provider.simpleBlock(context.get()))
+                .register();
+        PEA_CROP = REGISTRATE.block("pea_crop", p -> new PeaCrop(FabricBlockSettings
+                    .copyOf(Blocks.WHEAT)))
+                .blockstate((context, provider) -> provider.simpleBlock(context.get()))
+                .register();
+        CRATE = REGISTRATE.block("crate", CrateBlock::new)
+                .item((crateBlock, settings) -> new BlockItem(crateBlock, new FabricItemSettings()))
+                .model((context, provider) -> provider.generatedModels.get(new Identifier(Tywragriculture.MOD_ID, "block/crate/crate")))
+                .build()
+                .blockstate((context, provider) -> provider.directionalBlock(context.get(), state ->
+                        provider.models().getExistingFile(
+                                new Identifier(Tywragriculture.MOD_ID,
+                                        "block/crate/crate" + (state.get(CrateBlock.OPEN) ? "_open" : "")
+                                )
+                        )
+                ))
+                .tag(BlockTags.KITCHEN.get())
+                .register();
         SINK = REGISTRATE.block("sink", SinkBlock::new)
                 .simpleItem()
-                .blockstate((blockSinkBlockDataGenContext, registrateBlockstateProvider) -> registrateBlockstateProvider.models().getExistingFile(new Identifier(Tywragriculture.MOD_ID, "block/sink")))
+                .blockstate((context, provider) -> provider.models().getExistingFile(new Identifier(Tywragriculture.MOD_ID, "block/sink")))
                 .tag(BlockTags.KITCHEN.get())
-                .lang("Sink")
                 .register();
         PINE_CONED_SPRUCE_LEAVES = REGISTRATE.block("pine_coned_spruce_leaves", p -> Blocks.createLeavesBlock(BlockSoundGroup.GRASS))
                 .simpleItem()
                 .tag(net.minecraft.registry.tag.BlockTags.LEAVES)
-                .lang("Pine Coned Spruce Leaves")
                 .register();
         MEAT_GRINDER = REGISTRATE.block("meat_grinder", p -> new MeatGrinderBlock(FabricBlockSettings
                         .copyOf(Blocks.IRON_BLOCK)))
                 .simpleItem()
                 .tag(BlockTags.KITCHEN.get())
-                .lang("Meat Grinder")
+                .register();
+        OVEN = REGISTRATE.block("oven", p -> new OvenBlock(FabricBlockSettings
+                    .copyOf(Blocks.FURNACE)))
+                .item((ovenBlock, settings) -> new BlockItem(ovenBlock, new FabricItemSettings()))
+                .model((context, provider) -> provider.generatedModels.get(new Identifier(Tywragriculture.MOD_ID, "block/oven/oven")))
+                .build()
+                .blockstate((context, provider) -> provider.horizontalBlock(context.get(), state ->
+                        provider.models().getExistingFile(
+                                new Identifier(Tywragriculture.MOD_ID,
+                                        "block/oven/oven" + (state.get(OvenBlock.LIT) ? "_on" : "")
+                                )
+                        )
+                ))
+                .tag(BlockTags.KITCHEN.get())
                 .register();
 
 
@@ -72,21 +105,19 @@ public class BlockRegistry {
     }
 
     public static void registerFDInspiredBlocks(Registrate REGISTRATE) {
-        TOMATO_PLANT = registerBlock("tomato_shrub", new TomatoShrub(FabricBlockSettings
-                .copyOf(Blocks.SWEET_BERRY_BUSH)), false);
-        CABBAGE = registerBlock("cabbage_crop", new CabbageCrop(FabricBlockSettings
-                .copyOf(Blocks.WHEAT)), false);
+        TOMATO_PLANT = REGISTRATE.block("tomato_plant", p -> new TomatoShrub(FabricBlockSettings
+                .copyOf(Blocks.SWEET_BERRY_BUSH)))
+                .blockstate((context, provider) -> provider.simpleBlock(context.get()))
+                .tag(BlockTags.FD_INSPIRED.get())
+                .register();
+        CABBAGE = REGISTRATE.block("cabbage_crop", p -> new CabbageCrop(FabricBlockSettings
+                .copyOf(Blocks.WHEAT)))
+                .blockstate((context, provider) -> provider.simpleBlock(context.get()))
+                .tag(BlockTags.FD_INSPIRED.get())
+                .register();
     }
 
-    private static Block registerBlock(String name, Block block, boolean item) {
-        if (item) {
-            registerBlockItem(name, block);
-        }
+    private static Block registerBlock(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(Tywragriculture.MOD_ID, name), block);
-    }
-
-    private static void registerBlockItem(String name, Block block) {
-        Registry.register(Registries.ITEM, new Identifier(Tywragriculture.MOD_ID, name),
-                new BlockItem(block, new FabricItemSettings()));
     }
 }
