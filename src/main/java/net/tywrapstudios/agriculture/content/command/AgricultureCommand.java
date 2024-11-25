@@ -43,7 +43,6 @@ public class AgricultureCommand {
         TywragricultureConfig config = Tywragriculture.CONFIG_MANAGER.getConfig();
         ServerCommandSource source = context.getSource();
         if (Objects.equals(config.format_version, Tywragriculture.CONFIG_FORMAT)) {
-            source.sendFeedback(() -> Text.literal("[Tywragriculture] Reloading!").formatted(Formatting.GRAY), true);
             try {
                 source.sendFeedback(() -> Text.literal("Reloading!").formatted(Formatting.GRAY), true);
                 Tywragriculture.CONFIG_MANAGER.loadConfig();
@@ -61,7 +60,7 @@ public class AgricultureCommand {
                     --------[Config]---------
                     %s
                     -----------------------""",
-                Tywragriculture.CONFIG_MANAGER.getConfigJsonAsString());
+                Tywragriculture.CONFIG_MANAGER.getConfigJsonAsString(false, true));
         source.sendFeedback(() -> Text.literal(message).formatted(Formatting.GRAY), false);
         return 1;
     }
