@@ -17,7 +17,8 @@ A mod aimed to build onto Minecraft's farming and food gathering vibe, adding ne
 { 
   /* Psst, this is a README Comment!*/
   /* All the values in here are the default values.*/
-  "format_version": "AAAA", /*This is some internal stuff, don't touch nor worry about it.*/
+  // DO NOT TOUCH THIS. IT IS IMPORTANT INTERNAL STUFF.
+  "format_version": "1.0",
   // Several configurations for in-world features.
   "world_config": {
     // Whether to allow right-clicking to harvest crops.
@@ -33,7 +34,9 @@ A mod aimed to build onto Minecraft's farming and food gathering vibe, adding ne
 }
 ```
 > [!NOTE]
-> This file can be found at `.../config/tywragriculture.json5`.
+> This file can be found at `.../config/tywragriculture.json5`.  
+> The Config Handling is done by an API mod made by us called BlossomBridge. 
+> Any failure of the system [should be reported over there](https://github.com/Tywrap-Studios/BlossomBridge/issues) and preferably not here.
 ---
 ### Extra info:
 > [!NOTE]
