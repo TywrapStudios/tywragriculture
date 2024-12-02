@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "agriculture:block/cabbage_crop_crop/cabbage_crop_stage0"
+    },
+    "age=1": {
+      "model": "agriculture:block/cabbage_crop/cabbage_crop_stage1"
+    },
+    "age=2": {
+      "model": "agriculture:block/cabbage_crop/cabbage_crop_stage1"
+    },
+    "age=3": {
+      "model": "agriculture:block/cabbage_crop/cabbage_crop_stage2"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "agriculture:block/cabbage_crop/cabbage_crop_stage0"
+  }
+}

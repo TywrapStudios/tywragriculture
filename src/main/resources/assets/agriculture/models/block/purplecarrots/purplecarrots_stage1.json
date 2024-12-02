@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/crop",
-  "textures": {
-    "crop": "agriculture:block/purplecarrots/purplecarrots_stage1"
-  }
-}

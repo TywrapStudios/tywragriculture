@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "has_fruit=true": {
+      "model": "agriculture:block/pine_coned_spruce_leaves"
+    },
+    "has_fruit=false": {
+      "model": "minecraft:block/spruce_leaves"
+    }
+  }
+}

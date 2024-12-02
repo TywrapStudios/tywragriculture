@@ -39,7 +39,7 @@ public class ShrubLike extends Age4CropBlock {
      * @param rottenFruit The current {@link ItemConvertible} item that is the rotten fruit picked from the plant. May be {@code null} to not drop any rotten variants.
      * @return An {@link ActionResult}
      */
-    protected @NotNull ActionResult pickFruit(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, ItemConvertible fruit, @Nullable ItemConvertible rottenFruit) {
+    protected @NotNull ActionResult tryPickFruit(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, ItemConvertible fruit, @Nullable ItemConvertible rottenFruit) {
         boolean mature = ((CropBlock) state.getBlock()).isMature(state);
         if (!mature && player.getStackInHand(hand).isOf(Items.BONE_MEAL)) {
             return ActionResult.PASS;
@@ -66,6 +66,6 @@ public class ShrubLike extends Age4CropBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        return pickFruit(state, world, pos, player, hand, Items.WHEAT, null);
+        return tryPickFruit(state, world, pos, player, hand, Items.WHEAT, null);
     }
 }

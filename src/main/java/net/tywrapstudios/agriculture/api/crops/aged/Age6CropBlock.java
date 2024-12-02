@@ -5,16 +5,16 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
-import net.tywrapstudios.agriculture.api.property.Properties;
+import net.tywrapstudios.agriculture.api.property.Propertiess;
 
 /**
  * A {@link CropBlock} with an Age property of {@code 6}, it has {@code 7} BlockStates.
- * <p> This {@link IntProperty} is assigned a Custom made value from our {@link Properties}</p>
+ * <p> This {@link IntProperty} is assigned a Custom made value from our {@link Propertiess}</p>
  * @author Tiazzz
  */
 public class Age6CropBlock extends CropBlock {
     public static final int MAX_AGE = 6;
-    public static final IntProperty AGE = Properties.AGE_6;
+    public static final IntProperty AGE = Propertiess.AGE_6;
 
     public Age6CropBlock(Settings settings) {
         super(settings);

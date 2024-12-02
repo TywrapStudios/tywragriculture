@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "agriculture:tomato",
+    "agriculture:tomato_seeds",
+    "agriculture:rotten_tomato",
+    "agriculture:cabbage",
+    "agriculture:cabbage_leaf"
+  ]
+}

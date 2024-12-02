@@ -12,6 +12,10 @@ public class TywragricultureConfig extends AbstractConfig {
     public static class WorldConfig {
         @Comment("Whether to allow right-clicking to harvest crops.")
         public boolean right_click_harvest = true;
+        @Comment("The chance for a Pine Cone to grow.")
+        public float pine_cone_chance = 60.0f;
+        @Comment("The chance for an Apple to grow.")
+        public float apple_chance = 110.0f;
     }
 
     @Override

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "agriculture:block/sweet_potato_crop/sweet_potato_crop_stage0"
+  }
+}

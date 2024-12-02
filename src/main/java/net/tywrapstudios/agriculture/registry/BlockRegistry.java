@@ -2,27 +2,30 @@ package net.tywrapstudios.agriculture.registry;
 
 import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.*;
+import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.client.color.block.BlockColorProvider;
+import net.minecraft.client.color.world.BiomeColors;
+import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.loot.condition.LootCondition;
-import net.minecraft.loot.condition.LootConditionType;
-import net.minecraft.loot.condition.LootConditionTypes;
-import net.minecraft.loot.context.LootContext;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.tywrapstudios.agriculture.Tywragriculture;
-import net.tywrapstudios.agriculture.content.block.crops.*;
+import net.tywrapstudios.agriculture.content.block.plants.*;
 import net.tywrapstudios.agriculture.content.block.kitchen.*;
 import net.tywrapstudios.agriculture.resources.BlockTags;
 
+import java.util.function.Supplier;
+
 import static net.tywrapstudios.agriculture.Tywragriculture.LOGGING;
+import static net.tywrapstudios.agriculture.util.datagen.DatagenLootUtil.*;
+import static net.tywrapstudios.agriculture.util.datagen.DatagenBlockStateUtil.*;
 
 public class BlockRegistry {
 
@@ -38,59 +41,42 @@ public class BlockRegistry {
     public static RegistryEntry<OvenBlock> OVEN;
     public static RegistryEntry<SinkBlock> SINK;
     public static RegistryEntry<CabbageCrop> CABBAGE;
-    public static RegistryEntry<LeavesBlock> PINE_CONED_SPRUCE_LEAVES;
+    public static RegistryEntry<PineConeLeavesBlock> PINE_CONED_SPRUCE_LEAVES;
     public static RegistryEntry<MeatGrinderBlock> MEAT_GRINDER;
 
     public static void registerBlocks(Registrate REGISTRATE) {
-        /*  TODO: Properly check these .loot(...) calls
-             I honestly don't know if this is the correct way to do this for crops, also because
-             the parameter names in the base class methods of the lambda parameter lootTables
-             is very weird and obfuscated, as it was generated content.
-         */
         BLACK_CARROT = REGISTRATE.block("black_carrot_crop", p -> new BlackCarrotCrop(FabricBlockSettings
                     .copyOf(Blocks.CARROTS)))
-                .loot((lootTables, crop) -> lootTables.cropDrops(crop, ItemRegistry.BLACK_CARROT.get(), ItemRegistry.BLACK_CARROT.get(), () -> new LootCondition() {
-                    @Override
-                    public boolean test(LootContext lootContext) {
-                        return false;
-                    }
-
-                    @Override
-                    public LootConditionType getType() {
-                        return LootConditionTypes.BLOCK_STATE_PROPERTY;
-                    }
-                }).build())
-                .blockstate((context, provider) -> provider.models().crop("black_carrot_crop", new Identifier(Tywragriculture.MOD_ID, "black_carrot_crop")))
+                .loot(generateCropLoot(ItemRegistry.BLACK_CARROT.get(), ItemRegistry.BLACK_CARROT.get(), 2.0f, 5.0f))
+                .properties(settings -> FabricBlockSettings.copy(Blocks.CARROTS))
+                .blockstate(getCropBlockStateProvider())
                 .register();
         PURPLE_CARROT = REGISTRATE.block("purple_carrot_crop", p -> new PurpleCarrotCrop(FabricBlockSettings
                     .copyOf(Blocks.CARROTS)))
-                .loot((lootTables, crop) -> lootTables.cropDrops(crop, ItemRegistry.PURPLE_CARROT.get(), ItemRegistry.PURPLE_CARROT.get(), () -> new LootCondition() {
-                    @Override
-                    public boolean test(LootContext lootContext) {
-                        return false;
-                    }
-
-                    @Override
-                    public LootConditionType getType() {
-                        return LootConditionTypes.BLOCK_STATE_PROPERTY;
-                    }
-                }).build())
-                .blockstate((context, provider) -> provider.models().crop("purple_carrot_crop", new Identifier(Tywragriculture.MOD_ID, "purple_carrot_crop")))
+                .initialProperties(() -> Blocks.CARROTS)
+                .loot(generateCropLoot(ItemRegistry.PURPLE_CARROT.get(), ItemRegistry.PURPLE_CARROT.get(), 2.0f, 5.0f))
+                .blockstate(getCropBlockStateProvider())
                 .register();
         SWEET_POTATO = REGISTRATE.block("sweet_potato_crop", p -> new SweetPotatoCrop(FabricBlockSettings
                     .copyOf(Blocks.POTATOES)))
-                .blockstate((context, provider) -> provider.simpleBlock(context.get()))
+                .initialProperties(() -> Blocks.POTATOES)
+                .loot(generateCropLoot(ItemRegistry.SWEET_POTATOES.get(), ItemRegistry.SWEET_POTATOES.get(), 2.0f, 5.0f))
+                .blockstate(getCropBlockStateProvider())
                 .register();
         STRAWBERRY_BUSH = REGISTRATE.block("strawberry_bush", p -> new StrawberryBush(FabricBlockSettings
                     .copyOf(Blocks.SWEET_BERRY_BUSH)))
-                .blockstate((context, provider) -> provider.simpleBlock(context.get()))
+                .initialProperties(() -> Blocks.SWEET_BERRY_BUSH)
+                .loot(generateSingleItemLoot(ItemRegistry.STRAWBERRIES.get()))
+                .blockstate(getCropBlockStateProvider())
                 .register();
         PEA_CROP = REGISTRATE.block("pea_crop", p -> new PeaCrop(FabricBlockSettings
                     .copyOf(Blocks.WHEAT)))
-                .blockstate((context, provider) -> provider.simpleBlock(context.get()))
+                .initialProperties(() -> Blocks.WHEAT)
+                .loot(generateSingleItemLoot(ItemRegistry.PEAS.get()))
+                .blockstate(getCropBlockStateProvider())
                 .register();
         CRATE = REGISTRATE.block("crate", CrateBlock::new)
-                .item((crateBlock, settings) -> new BlockItem(crateBlock, new FabricItemSettings()))
+                .item(BlockItem::new)
                 .model((context, provider) -> provider.generatedModels.get(new Identifier(Tywragriculture.MOD_ID, "block/crate/crate")))
                 .build()
                 .blockstate((context, provider) -> provider.directionalBlock(context.get(), state ->
@@ -104,12 +90,14 @@ public class BlockRegistry {
                 .register();
         SINK = REGISTRATE.block("sink", SinkBlock::new)
                 .simpleItem()
-                .blockstate((context, provider) -> provider.models().getExistingFile(new Identifier(Tywragriculture.MOD_ID, "block/sink")))
+                .blockstate((context, provider) -> provider.models().cubeBottomTop("sink", new Identifier(Tywragriculture.MOD_ID, "block/sink/sink_side"), new Identifier(Tywragriculture.MOD_ID, "block/sink/sink_bottom"), new Identifier(Tywragriculture.MOD_ID, "block/sink/sink_top")))
                 .tag(BlockTags.KITCHEN.get())
                 .register();
-        PINE_CONED_SPRUCE_LEAVES = REGISTRATE.block("pine_coned_spruce_leaves", p -> Blocks.createLeavesBlock(BlockSoundGroup.GRASS))
+        PINE_CONED_SPRUCE_LEAVES = REGISTRATE.block("pine_coned_spruce_leaves", p ->
+                        createPineConeLeavesBlock(BlockSoundGroup.GRASS))
                 .simpleItem()
-                .blockstate((context, provider) -> provider.models().singleTexture("pine_coned_spruce_leaves", new Identifier("block/leaves"), "all", new Identifier(Tywragriculture.MOD_ID, "pine_coned_spruce_leaves")))
+                .defaultBlockstate()
+                .loot((lootTables, block) -> getLootPoolForLeavesBlock(block, Items.SPRUCE_SAPLING, ItemRegistry.PINE_CONE.get()).build())
                 .tag(net.minecraft.registry.tag.BlockTags.LEAVES)
                 .register();
         MEAT_GRINDER = REGISTRATE.block("meat_grinder", p -> new MeatGrinderBlock(FabricBlockSettings
@@ -121,7 +109,6 @@ public class BlockRegistry {
                     .copyOf(Blocks.FURNACE)))
                 .item((ovenBlock, settings) -> new BlockItem(ovenBlock, new FabricItemSettings()))
                 .model((context, provider) -> provider.blockItem(() -> context.get().getBlock(), "/oven"))
-//              .model((context, provider) -> provider.generatedModels.get(new Identifier(Tywragriculture.MOD_ID, "block/oven/oven")))
                 .build()
                 .blockstate((context, provider) -> provider.horizontalBlock(context.get(), state ->
                         provider.models().getExistingFile(
@@ -139,19 +126,25 @@ public class BlockRegistry {
     }
 
     public static void registerFDInspiredBlocks(Registrate REGISTRATE) {
-        TOMATO_PLANT = REGISTRATE.block("tomato_plant", p -> new TomatoShrub(FabricBlockSettings
-                .copyOf(Blocks.SWEET_BERRY_BUSH)))
-                .blockstate((context, provider) -> provider.simpleBlock(context.get()))
+        TOMATO_PLANT = REGISTRATE.block("tomato_shrub", p -> new TomatoShrub(FabricBlockSettings
+                    .copyOf(Blocks.SWEET_BERRY_BUSH)))
+                .initialProperties(() -> Blocks.SWEET_BERRY_BUSH)
+                .blockstate(getCropBlockStateProvider())
                 .tag(BlockTags.FD_INSPIRED.get())
                 .register();
         CABBAGE = REGISTRATE.block("cabbage_crop", p -> new CabbageCrop(FabricBlockSettings
-                .copyOf(Blocks.WHEAT)))
-                .blockstate((context, provider) -> provider.simpleBlock(context.get()))
+                    .copyOf(Blocks.WHEAT)))
+                .initialProperties(() -> Blocks.WHEAT)
+                .blockstate(getCropBlockStateProvider())
                 .tag(BlockTags.FD_INSPIRED.get())
                 .register();
     }
 
     private static Block registerBlock(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(Tywragriculture.MOD_ID, name), block);
+    }
+
+    private static PineConeLeavesBlock createPineConeLeavesBlock(BlockSoundGroup soundGroup) {
+        return new PineConeLeavesBlock(FabricBlockSettings.create().mapColor(MapColor.DARK_GREEN).strength(0.2F).ticksRandomly().sounds(soundGroup).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never));
     }
 }

@@ -2,6 +2,7 @@ package net.tywrapstudios.agriculture.content.item.kitchen;
 
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -53,7 +54,6 @@ public class BriquetteItem extends Item {
                     world.getRandom().nextFloat() * 0.4F + 0.8F);
             world.setBlockState(blockPos, blockState.with(Properties.LIT, Boolean.TRUE), 11);
             world.emitGameEvent(playerEntity, GameEvent.BLOCK_CHANGE, blockPos);
-            context.getStack().damage(1, playerEntity, p -> p.sendToolBreakStatus(context.getHand()));
         }
         return ActionResult.SUCCESS;
     }
